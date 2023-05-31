@@ -1,0 +1,76 @@
+@use '../abstract/variables' as var;
+
+.jeo-add-player-container {
+  display: flex;
+  overflow-x: auto;
+  width: 100%;
+  padding: 30px 0;
+}
+
+.jeo-add-player-card {
+  width: 150px;
+  height: 175px;
+  position: relative;
+  background-color: white;
+  margin-right: 20px;
+  border: 1px solid var.$primary-periwinkle-light;
+}
+
+.jeo-add-card {
+  border: 1px dashed var.$primary-periwinkle-light;
+  box-shadow: var.$default-box-shadow;
+  display: flex;
+  cursor: pointer;
+
+  .jeo-add-card-inner {
+    margin: auto;
+    text-align: center;
+    color: var.$primary-periwinkle-light;
+  }
+}
+
+.jeo-remove-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  background-color: var.$primary-periwinkle-light;
+  border-bottom-left-radius: var.$default-border-radius;
+
+  mat-icon {
+    color: white;
+  }
+}
+
+.jeo-player-icon {
+  height: 94px;
+  background-color: white;
+  text-align: center;
+  background-position: center;
+  background-size: cover;
+
+  mat-icon {
+    font-size: 114px;
+    height: 94px;
+    width: 115px;
+    color: var.$primary-periwinkle-light;
+    cursor: pointer;
+  }
+
+  input {
+    display: none;
+
+  }
+}
+
+.jeo-player-info {
+  height: 81px;
+  padding: 10px;
+  background-color: var.$primary-periwinkle-light;
+  label {
+    color: white;
+  }
+}
+

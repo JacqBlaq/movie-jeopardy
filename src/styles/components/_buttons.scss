@@ -1,0 +1,62 @@
+@use '../abstract/variables' as var;
+@use '../abstract/mixins' as mix;
+
+
+// Base button style
+.jeo-button {
+  height: var.$jeo-button-height;
+  padding: var.$jeo-button-padding;
+  box-shadow: var.$default-box-shadow;
+  text-align: center;
+  cursor: pointer;
+  display: block;
+
+  &:focus, &:active {
+    filter: brightness(75%) !important;
+  }
+
+  &:disabled {
+    background-color: var.$gray-light;
+    border: 1px solid var.$gray-light;
+    color: var.$gray;
+  }
+}
+
+
+// Primary button style
+.jeo-button-primary {
+  @include mix.styleJeoButton(
+    $primaryColor:  var.$primary-periwinkle,
+    $txtColor:      white,
+    $hoverColor:    var.$primary-periwinkle-light);
+}
+
+.jeo-button-primary-inverse {
+  @include mix.styleInverseJeoButton(var.$primary-periwinkle, white);
+}
+
+
+// Secondary button style
+.jeo-button-secondary {
+  @include mix.styleJeoButton(
+    $primaryColor:  var.$secondary-pink,
+    $txtColor:      white,
+    $hoverColor:    var.$secondary-pink-light);
+}
+
+.jeo-button-secondary-inverse {
+  @include mix.styleInverseJeoButton(var.$secondary-pink, white);
+}
+
+
+// Dark button style
+.jeo-button-dark {
+  @include mix.styleJeoButton(
+    $primaryColor:  var.$black-dark,
+    $txtColor:      white,
+    $hoverColor:    var.$black-dark-light);
+}
+
+.jeo-button-dark-inverse {
+  @include mix.styleInverseJeoButton(var.$black-dark, white);
+}

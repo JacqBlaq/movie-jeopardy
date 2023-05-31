@@ -1,0 +1,31 @@
+@use '../abstract/variables' as v;
+
+.jeo-header {
+  position: relative;
+  text-align: center;
+}
+
+.jeo-header-line {
+  height: 1px;
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  background-color: v.$secondary-pink;
+}
+
+.jeo-header-title {
+  height: 50px;
+  z-index: 1;
+  position: relative;
+  text-align: center;
+  padding: 5px 15px;
+  border-radius: 4px;
+  padding: 0 80px;
+  display: inline-flex;
+  background-color: v.$secondary-pink;
+
+  .jeo-header-text {
+    color: white;
+    margin: auto;
+  }
+}

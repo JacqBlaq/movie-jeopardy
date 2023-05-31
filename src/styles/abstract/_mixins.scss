@@ -1,0 +1,30 @@
+@mixin rtl($property, $ltr-value, $rtl-value) {
+  #{$property}: $ltr-value;
+
+  [dir=rtl] & {
+    #{$property}: $rtl-value;
+  }
+}
+
+@mixin styleJeoButton($primaryColor, $txtColor, $hoverColor) {
+  background-color: $primaryColor;
+  border: 1px solid $primaryColor;
+  color: $txtColor;
+
+  &:hover {
+    background-color: $hoverColor;
+    border: 1px solid $hoverColor;
+  }
+}
+
+@mixin styleInverseJeoButton($primaryColor, $inverseColor) {
+  background-color: $inverseColor;
+  border: 1px solid $primaryColor;
+  color: $primaryColor;
+
+  &:hover {
+    background-color: $primaryColor;
+    border: 1px solid $primaryColor;
+    color: $inverseColor;
+  }
+}

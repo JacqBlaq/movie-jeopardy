@@ -1,0 +1,78 @@
+@use '../abstract/variables' as v;
+
+.jeo-homepage {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  padding-top: 3.125rem;
+  background: transparent linear-gradient(180deg, white 0%, v.$primary-periwinkle-light 100%) 0% 0% no-repeat padding-box;
+
+  hr {
+    margin: 1.5625rem 0 0 0;
+    border-color: v.$primary-periwinkle;
+    border-bottom-width: 0;
+  }
+}
+
+.jeo-homepage-title {
+  font-family: v.$font-family-title !important;
+  font-weight: v.$font-weight-heavy;
+  font-size: 3.75rem !important;
+  color: v.$primary-periwinkle;
+  text-align: center;
+  padding: 40px 0;
+  margin: 0;
+
+  span {
+   // padding-bottom: 1.5625rem;
+  }
+}
+
+.jeo-homepage-bg {
+  padding-top: 250px;
+}
+
+.jeo-homepage-stripe-1 {
+  height: 8.375rem;
+  width: 100%;
+  margin-bottom: 20px;
+  background-color: v.$primary-periwinkle-lightest;
+}
+
+.jeo-homepage-stripe-2 {
+  height: 3.125rem;
+  width: 100%;
+  margin-bottom: 160px;
+  background-color: v.$primary-periwinkle;
+}
+
+.jeo-homepage-stripe-3 {
+  height: 1px;
+  width: 100%;
+  margin-bottom: 20px;
+  background-color: white;
+}
+
+.jeo-homepage-stripe-4 {
+  height: 10px;
+  width: 100%;
+  background-color: v.$secondary-pink-lightest;
+}
+
+
+.jeo-main-container {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+}
+
+
+.jeo-game-container {
+  width: 100%;
+  display: flex;
+}
+
+jeo-home-page {
+  margin: auto;
+}
