@@ -1,0 +1,30 @@
+@use '../abstract/variables' as var;
+
+jeo-gameboard {
+  display: contents;
+}
+
+.jeo-gameboard-container {
+  width: 100%;
+  height: calc(100vh - 170px);
+  margin: 0 50px;
+  background-color: white;
+  border: 1px solid var.$primary-periwinkle;
+  box-shadow: var.$default-box-shadow;
+
+}
+
+.jeo-players {
+  width: calc(100% - 113.81px);
+  text-align: center;
+}
+
+.jeo-gameboard-buttons {
+  #reset-button {
+    margin-bottom: 15px;
+  }
+
+  #exit-button {
+    width: 113.81px;
+  }
+}

@@ -1,0 +1,49 @@
+@use '../abstract/variables' as var;
+
+
+jeo-game-players {
+  display: flex;
+  margin: auto;
+}
+
+.jeo-game-player {
+  text-align: center;
+  margin-right: 20px;
+}
+
+.game-player-avatar {
+  width: 50px;
+  height: 50px;
+  border: 1px solid var.$black-dark;
+  border-radius: var.$default-border-radius var.$default-border-radius 0px 0px;
+  margin: auto;
+  border-bottom: 0;
+
+
+  mat-icon {
+    font-size: 50px;
+    height: 41px;
+    width: 49px;
+  }
+}
+
+.game-player-info {
+  background-color: var.$black-dark;
+  padding: 3px 10px;
+  color: white;
+  //max-width: 168px;
+  width: 136px;
+
+  label {
+    margin: 0;
+    font-size: 12px;
+    line-height: 13px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+}
+
+.game-player-score {
+  color: var.$tertiary-orange;
+  margin: 0 !important;
+}

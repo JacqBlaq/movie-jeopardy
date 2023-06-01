@@ -1,0 +1,13 @@
+<div class="jeo-game-player"
+  *ngFor="let player of players; index as i">
+  <div class="d-flex">
+    <div class="game-player-avatar"
+      [style.background]="player.avatar ? 'center / cover url(' + player.avatar + ')': '#fff'">
+      <mat-icon *ngIf="player.avatar == null">person</mat-icon>
+    </div>
+  </div>
+  <div class="game-player-info">
+    <label>{{player.name || ('Player ' + (i+1))}}</label>
+    <h6 class="game-player-score">{{'$' + (player.score ?? '0')}}</h6>
+  </div>
+</div>

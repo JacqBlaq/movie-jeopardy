@@ -1,38 +1,32 @@
 import { Component } from '@angular/core';
-
-interface IPlayer {
-  id: number;
-  name: string;
-  avatar?: string;
-}
+import { IPlayer, PlayersService } from 'src/app/services/players.service';
 
 @Component({
-  selector: 'jeo-add-player-card',
-  templateUrl: './jeo-add-player-card.component.html'
+  selector: 'jeo-players',
+  templateUrl: './jeo-players.component.html'
 })
-export class JeoAddPlayerCardComponent {
+export class JeoPlayersComponent {
 
   currentPlayerIndex!: number;
 
-  players: IPlayer[] = [
-    { id: 1, name: '' }
-  ];
+  constructor(private playersService: PlayersService) { }
 
-  constructor() { }
+  get players() {
+    return this.playersService.getPlayers();
+  }
 
   onAddPlayer(): void {
-    if (this.players.length === 5) { return; }
-
-    const lastPlayer = this.players[this.players.length - 1]
-    this.players.push({
-      id: lastPlayer.id + 1,
-      name: ''
-    });
+    this.playersService.onAddPlayer();
   }
 
   onRemovePlayer(id: number): void {
-    this.players = this.players.filter(p => p.id !== id);
+    this.playersService.onRemovePlayer(id);
   }
+
+  onNameChange(index: number, change: string): void {
+    this.playersService.onNameChange(index, change);
+  }
+
 
   onUploadAvatar(index: number, e: any): void {
     this.currentPlayerIndex = index;
@@ -53,9 +47,7 @@ export class JeoAddPlayerCardComponent {
   _handleReaderLoaded(e: any) {
     let reader = e.target;
     if (this.currentPlayerIndex > -1)
-      this.players[this.currentPlayerIndex].avatar = reader.result;
-
-    console.log(reader)
+      this.playersService.onAvatarUpload(this.currentPlayerIndex, reader.result);
   }
 
 }

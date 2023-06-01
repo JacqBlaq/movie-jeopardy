@@ -5,6 +5,10 @@
   box-sizing: border-box !important;
 }
 
+a {
+ text-decoration: none !important;
+}
+
 label {
   display: inline-block;
   margin-bottom: 0.5rem;
@@ -25,4 +29,16 @@ label {
   border: 1px solid var.$gray-light;
   border-radius: var.$default-border-radius;
   transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.d-inline-flex {
+  display: inline-flex;
+}
+
+.d-block {
+  display: block;
 }

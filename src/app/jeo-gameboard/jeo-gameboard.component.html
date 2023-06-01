@@ -1,0 +1,17 @@
+<div class="jeo-gameboard-container p-20">
+  <div class="jeo-gameboard-header d-flex">
+    <div class="jeo-players d-flex">
+      <jeo-game-players [players]="players"></jeo-game-players>
+    </div>
+    <div class="jeo-gameboard-buttons">
+      <button jeo-button type="button" id="reset-button"
+        (click)="resetScores()"
+        theme="dark-inverse">Reset Scores</button>
+      <a jeo-button routerLink="/"
+        (click)="exitGame()"
+        type="button" id="exit-button"
+        theme="dark-inverse">Exit</a>
+    </div>
+  </div>
+
+</div>

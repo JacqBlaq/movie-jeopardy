@@ -12,7 +12,7 @@ enum ButtonThemeClass {
 }
 
 @Component({
-  selector: 'button[jeo-button]',
+  selector: 'button[jeo-button], a[jeo-button]',
   template: `<ng-content></ng-content>`
 })
 export class JeoButtonComponent {

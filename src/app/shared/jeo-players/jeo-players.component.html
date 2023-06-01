@@ -3,7 +3,9 @@
   <div class="jeo-add-player-card"
     *ngFor="let player of players; index as i">
 
-    <div class="jeo-remove-button" (click)="onRemovePlayer(player.id)">
+    <div class="jeo-remove-button"
+      *ngIf="players.length > 1"
+      (click)="onRemovePlayer(player.id)">
       <mat-icon>close</mat-icon>
     </div>
 
@@ -20,6 +22,7 @@
       <input id="player-name" type="text"
         class="form-control"
         [(ngModel)]="player.name"
+        (ngModelChange)="onNameChange(i, $event)"
         name="player-name"
         required>
     </div>
