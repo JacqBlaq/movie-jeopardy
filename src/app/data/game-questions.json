@@ -1,11 +1,13 @@
 [
   {
-    "category": "Harry Porter",
+    "title": "Harry Porter",
+    "isCleared": false,
     "questions": [
       {
         "points": 200,
         "question": "Ron Weasley has a fear of which insect?",
         "answer": "Spider",
+        "isCleared": false,
         "options": [
           "Ant",
           "Spider",
@@ -17,6 +19,7 @@
         "points": 400,
         "question": "What animal can Remus Lupin turn into?",
         "answer": "Werewolf",
+        "isCleared": false,
         "options": [
           "Troll",
           "Dog",
@@ -28,6 +31,7 @@
         "points": 600,
         "question": "Where did Ron and Harry crash the flying car on their way to Hogwarts in the second book, 'Harry Potter and The Chamber of Secrets'?",
         "answer": "The Whomping Willow",
+        "isCleared": false,
         "options": [
           "The Whomping Willow",
           "The Weeping Willow",
@@ -39,6 +43,7 @@
         "points": 800,
         "question": "Which spell is also known as the Thief's Friend?",
         "answer": "Alohomora",
+        "isCleared": false,
         "options": [
           "Inanimatus Conjurus Spell",
           "Lumos",
@@ -50,6 +55,7 @@
         "points": 1000,
         "question": "Which substance is destructive enough to destroy a Horcrux when exposed to it?",
         "answer": "Basilisk venom",
+        "isCleared": false,
         "options": [
           "Erumpent musk",
           "Basilisk venom",
@@ -60,12 +66,14 @@
     ]
   },
   {
-    "category": "Lord of the Rings",
+    "title": "Lord of the Rings",
+    "isCleared": false,
     "questions": [
       {
         "points": 200,
         "question": "He is Frodo's loyal friend who journeyed with him from Middle Earth to Mount Doom.",
         "answer": "Samwise Gamgee",
+        "isCleared": false,
         "options": [
           "Samwise Gamgee",
           "Pippin Took",
@@ -77,6 +85,7 @@
         "points": 400,
         "question": "The Lord of the Rings films are based on a novel written by which author?",
         "answer": "J. R. R. Tolkien",
+        "isCleared": false,
         "options": [
           "George R.R. Martin",
           "George R. Tolkien",
@@ -88,6 +97,7 @@
         "points": 600,
         "question": "In 'Lord of the Rings: The Fellowship of the Ring,' Bilbo gives Frodo a powerful sword named 'Sting.' This weapon has the magical ability to glow blue when which specific race is nearby?",
         "answer": "Orcs",
+        "isCleared": false,
         "options": [
           "Elves",
           "Ogres",
@@ -99,6 +109,7 @@
         "points": 800,
         "question": "What was the riddle that Gandalf could not figure out to open the door?",
         "answer": "\"Speak friend and enter.\"",
+        "isCleared": false,
         "options": [
           "\"Speak friend and enter.\"",
           "\"Speak now and enter.\"",
@@ -110,6 +121,7 @@
         "points": 1000,
         "question": "What are the names of the two towers?",
         "answer": "Minas Tirith and Minas Morgul",
+        "isCleared": false,
         "options": [
           "Tower of Tar-Minastir and Tower on Sorontil",
           "Barad Nimras and Barad-dur",
@@ -120,12 +132,14 @@
     ]
   },
   {
-    "category": "Shrek",
+    "title": "Shrek",
+    "isCleared": false,
     "questions": [
       {
         "points": 200,
         "question": "Who is the actor who gave the voice of 'Shrek'?",
         "answer": "Mike Myers",
+        "isCleared": false,
         "options": [
           "Mike Myers",
           "Tom Cruise",
@@ -137,6 +151,7 @@
         "points": 400,
         "question": "What does Shrek blow up for Fiona, as a balloon?",
         "answer": "Frog",
+        "isCleared": false,
         "options": [
           "Snake",
           "Toad",
@@ -148,6 +163,7 @@
         "points": 600,
         "question": "What are the names of Shrek and Fiona's children?",
         "answer": "Fergus, Farkle, Felicia",
+        "isCleared": false,
         "options": [
           "Debbie, Coco, Bananas",
           "Fergus, Farkle, Felicia",
@@ -159,6 +175,7 @@
         "points": 800,
         "question": "The beginning of the movie is a flashback. The King and Queen are making a deal with Rumpelstiltskin to have Fiona's curse broken. What are they giving to Rumplestiltskin in exchange for this service?",
         "answer": "The kingdom of Far Far Away",
+        "isCleared": false,
         "options": [
           "Fiona's hand in marriage",
           "The kingdom of Far Far Away",
@@ -170,6 +187,7 @@
         "points": 1000,
         "question": "What happens to the mermaid who kisses Shrek?",
         "answer": "She gets eaten by sharks",
+        "isCleared": false,
         "options": [
           "She gets eaten by a dragon",
           "She becomes a human",
@@ -180,12 +198,14 @@
     ]
   },
   {
-    "category": "The Hobbit",
+    "title": "The Hobbit",
+    "isCleared": false,
     "questions": [
       {
         "points": 200,
         "question": "What is the name of the Elven King who visited Erebor?",
         "answer": "Thranduil",
+        "isCleared": false,
         "options": [
           "Thranduil",
           "Aragorn",
@@ -197,6 +217,7 @@
         "points": 400,
         "question": "Why did the Dwarves have to go to Rivendell to visit the elves?",
         "answer": "They needed help reading the map",
+        "isCleared": false,
         "options": [
           "They needed elven weapons",
           "They needed support",
@@ -208,6 +229,7 @@
         "points": 600,
         "question": "What Middle Earth group turned their backs on the Dwarves when they were in need of help?",
         "answer": "Elves",
+        "isCleared": false,
         "options": [
           "Elves",
           "Fairies",
@@ -219,6 +241,7 @@
         "points": 800,
         "question": "Bilbo's reminiscences and writing take him back to a time 60 years ago. From whom does he hear the words \"I am looking for someone to share in an adventure.\"?",
         "answer": "Gandalf",
+        "isCleared": false,
         "options": [
           "Thorin Oakenshield",
           "Elrond",
@@ -230,6 +253,7 @@
         "points": 1000,
         "question": "Bilbo helps the Dwarves escape from the Elves by putting them in empty barrels and sending them down the river. What had been in the barrels?",
         "answer": "Wine",
+        "isCleared": false,
         "options": [
           "Rice",
           "Wine",
@@ -240,12 +264,14 @@
     ]
   },
   {
-    "category": "The Twilight Saga",
+    "title": "The Twilight Saga",
+    "isCleared": false,
     "questions": [
       {
         "points": 200,
         "question": "Where do Bella and Edward get married?",
         "answer": "The Cullen house",
+        "isCleared": false,
         "options": [
           "A church",
           "The Cullen house",
@@ -257,6 +283,7 @@
         "points": 400,
         "question": "What does Jacob give Bella for her birthday?",
         "answer": "A dream-catcher",
+        "isCleared": false,
         "options": [
           "An arrowhead necklace",
           "A tribal bracelet",
@@ -268,6 +295,7 @@
         "points": 600,
         "question": "What was Bella afraid of in the movie?",
         "answer": "Getting old",
+        "isCleared": false,
         "options": [
           "Werewolves",
           "Edward dying",
@@ -279,6 +307,7 @@
         "points": 800,
         "question": "Who was Rosalie engaged to as a human?",
         "answer": "Royce King",
+        "isCleared": false,
         "options": [
           "Royce King",
           "Jack Clinton",
@@ -290,6 +319,7 @@
         "points": 1000,
         "question": "In 'Twilight: Eclipse,' who disposes of the newborn vampire girl, Bree Tanner?",
         "answer": "Felix",
+        "isCleared": false,
         "options": [
           "Felix",
           "Jane",
@@ -300,12 +330,14 @@
     ]
   },
   {
-    "category": "Lion King",
+    "title": "Lion King",
+    "isCleared": false,
     "questions": [
       {
         "points": 200,
         "question": "In the first Lion King, what is the first song you hear in the movie?",
         "answer": "The Circle of Life",
+        "isCleared": false,
         "options": [
           "This Land",
           "Be Prepared",
@@ -317,6 +349,7 @@
         "points": 400,
         "question": "Who originally came up with the phrase 'Hakuna Matata'?",
         "answer": "Raffiki",
+        "isCleared": false,
         "options": [
           "Timon",
           "Pumba",
@@ -328,6 +361,7 @@
         "points": 600,
         "question": "What was the name of Nala's mother?",
         "answer": "Sarafina",
+        "isCleared": false,
         "options": [
           "Zara",
           "Kiara",
@@ -339,6 +373,7 @@
         "points": 800,
         "question": "In Lion King 1 1/2, what is Timon trying to build when he causes the tunnel to collapse?",
         "answer": "Skylight",
+        "isCleared": false,
         "options": [
           "A new tunnel path",
           "A sauna room",
@@ -350,6 +385,7 @@
         "points": 1000,
         "question": "Please complete this sentence. \"Didn't your mother ______?\"",
         "answer": "\"Ever tell you not to play with your food\"",
+        "isCleared": false,
         "options": [
           "\"Ever tell you not to play with your food\"",
           "\"Tell you to stay near Pride Rock\"",
