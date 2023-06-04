@@ -28,3 +28,9 @@
     color: $inverseColor;
   }
 }
+
+@mixin styleHeader($bgColor) {
+  .jeo-header-line, .jeo-header-title {
+    background-color: $bgColor
+  }
+}

@@ -1,4 +1,5 @@
-@use '../abstract/variables' as v;
+@use '../abstract/variables' as var;
+@use '../abstract/mixins' as mix;
 
 .jeo-header {
   position: relative;
@@ -10,7 +11,7 @@
   width: 100%;
   position: absolute;
   top: 50%;
-  background-color: v.$secondary-pink;
+  background-color: var.$secondary-pink;
 }
 
 .jeo-header-title {
@@ -22,10 +23,24 @@
   border-radius: 4px;
   padding: 0 80px;
   display: inline-flex;
-  background-color: v.$secondary-pink;
+  background-color: var.$secondary-pink;
 
   .jeo-header-text {
     color: white;
     margin: auto;
+  }
+}
+
+.jeo-header {
+  &.warning-header {
+    @include mix.styleHeader(var.$tertiary-orange);
+  }
+
+  &.danger-header {
+    @include mix.styleHeader(var.$danger-red);
+  }
+
+  &.dark-header {
+    @include mix.styleHeader(var.$black-dark);
   }
 }
