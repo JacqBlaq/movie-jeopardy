@@ -6,9 +6,18 @@ import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
 })
 export class JeoGameCardComponent implements OnInit {
 
+  private _isCleared: boolean = false;
+
   @Input() isCategory: boolean = false;
   @Input() labelText!: string | number;
-  @Input() isCleared: boolean = false;
+
+  @Input() get isCleared(): boolean {
+    return this._isCleared;
+  }
+
+  set isCleared(value: boolean) {
+    this._isCleared = value;
+  }
 
   @Output() onQuestionClick: EventEmitter<any> = new EventEmitter<any>();
 

@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { IPlayer, PlayersService } from '../services/players.service';
-import { GameboardService, ICategory, IQuestion } from '../services/gameboard.service';
+import { GameboardService} from '../services/gameboard.service';
 import { MatDialog } from '@angular/material/dialog';
-import { JeoQuestionComponent } from '../shared/jeo-question/jeo-question.component';
+import { IQuestionResult, JeoQuestionComponent } from '../shared/jeo-question/jeo-question.component';
+import { ICategory, IQuestion, IQuestionModal, QuestionService } from '../services/question.service';
+import { IConfirmModalData, JeoConfirmModalComponent } from '../shared/jeo-confirm-modal/jeo-confirm-modal.component';
 
 @Component({
   selector: 'jeo-gameboard',
@@ -14,7 +16,7 @@ export class JeoGameboardComponent implements OnInit {
   constructor(
     public dialog: MatDialog,
     private playersService: PlayersService,
-    private gameboardService: GameboardService) { }
+    private questionService: QuestionService) { }
 
   ngOnInit(): void {
   }
@@ -24,7 +26,7 @@ export class JeoGameboardComponent implements OnInit {
    * @type {ICategory[]}
    */
   get categoryQuestions(): ICategory[] {
-    return this.gameboardService.getQuestions();
+    return this.questionService.getQuestions();
   }
 
   /**
@@ -55,6 +57,7 @@ export class JeoGameboardComponent implements OnInit {
    */
   exitGame(): void {
     this.playersService.onGameExit();
+    this.questionService.onGameExit();
   }
 
   /**
@@ -71,12 +74,12 @@ export class JeoGameboardComponent implements OnInit {
     }
 
     const activePlayer = this.playersService.getActivePlayerById();
-    const modalData = {
+    const modalData: IQuestionModal = {
       categoryTitle: cat.title,
       points: question.points,
       question: question.question,
       answer: question.answer,
-      options: question.options,
+      answerChoices: question.answerChoices,
       activePlayer: activePlayer
     };
 
@@ -85,10 +88,24 @@ export class JeoGameboardComponent implements OnInit {
       data: modalData,
     });
 
-    // dialogRef.afterClosed().subscribe(result => {
-    //   console.log('The dialog was closed');
-    //   const data = result;
-    // });
+    dialogRef.afterClosed().subscribe((result: IQuestionResult) => {
+      if (result.isCorrectAnswer) {
+        this.playersService.onScoreIncrease(activePlayer.index, question.points);
+      }
+
+      const settings: IConfirmModalData = {
+        headerText: result.isCorrectAnswer ? 'Correct Answer' : 'Incorrect Answer',
+        message: `${(result.isCorrectAnswer ? '$' + question.points : 'No')} points awarded to ${activePlayer.name}.`,
+        btnTheme: 'dark',
+        headerTheme: result.isCorrectAnswer? 'warning' : 'danger'
+      };
+
+      const dialogRef = this.dialog.open(JeoConfirmModalComponent, {
+        width: '530px',
+        data: settings,
+      });
+
+    });
 
   }
 }

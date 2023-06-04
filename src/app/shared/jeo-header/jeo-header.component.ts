@@ -1,6 +1,6 @@
 import { Component, HostBinding, Input, OnInit } from '@angular/core';
 
-type headerTheme = 'primary' | 'warning' | 'danger' | 'dark';
+export type HeaderTheme = 'primary' | 'warning' | 'danger' | 'dark';
 
 enum HeaderThemeClass {
   'primary' = '',
@@ -23,7 +23,7 @@ enum HeaderThemeClass {
 export class JeoHeaderComponent {
 
   @Input() labelText: string = '';
-  @Input() theme: headerTheme = 'primary';
+  @Input() theme: HeaderTheme = 'primary';
 
   get getThemeClass(): string {
     return HeaderThemeClass[this.theme];

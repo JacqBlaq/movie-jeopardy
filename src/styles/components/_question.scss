@@ -43,4 +43,10 @@ jeo-question {
   }
 }
 
+.jeo-answer-choices {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 60px 60px;
+  grid-row-gap: 20px;
+}
 

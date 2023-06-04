@@ -7,31 +7,49 @@ export interface IModalData extends IQuestionModal {
   modalTitle: string;
 }
 
+export interface IQuestionResult {
+  isCorrectAnswer: boolean
+}
+
 @Component({
   selector: 'jeo-question',
   templateUrl: './jeo-question.component.html'
 })
-export class JeoQuestionComponent implements OnInit {
+export class JeoQuestionComponent {
 
   question!: IModalData;
+  showAnswer: boolean = false;
+  selectedAnswer: string = '';
+  multipleChoiceKeys: string[] = ['A', 'B', 'C', 'D'];
 
   constructor(
     public dialogRef: MatDialogRef<JeoQuestionComponent>,
     @Inject(MAT_DIALOG_DATA) public data: IQuestionModal,
     private playersService: PlayersService) {
-      this.question = {
-        ...data,
-        modalTitle: `
-          ${data.categoryTitle}&nbsp;&nbsp;&nbsp;&nbsp;<strong>$${data.points}</strong>`
+      this.setData(data);
+  }
+
+  setData(data: IQuestionModal): void {
+    this.question = {
+      ...data,
+      modalTitle: `
+        ${data.categoryTitle}&nbsp;&nbsp;&nbsp;&nbsp;<strong>$${data.points}</strong>`
+    };
+  }
+
+  onAnswerSelection(answer: string): void {
+    this.selectedAnswer = answer;
+  }
+
+  onCloseModal(): void {
+    if (this.showAnswer)
+      this.dialogRef.close();
+    else {
+      const result = {
+        isCorrectAnswer: this.selectedAnswer === this.question.answer
       };
+      this.dialogRef.close(result);
     }
 
-  ngOnInit(): void {
-
   }
-
-  closeModal(): void {
-    this.dialogRef.close();
-  }
-
 }

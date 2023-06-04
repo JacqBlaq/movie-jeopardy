@@ -7,10 +7,13 @@
       <mat-icon *ngIf="player.avatar == null">person</mat-icon>
     </div>
   </div>
-  <div class="game-player-info">
+  <div class="game-player-info"
+    matTooltip="It's Your turn!"
+    [matTooltipDisabled]="activePlayerId != player.id">
+
     <label class="text-truncate">
       <mat-icon *ngIf="activePlayerId == player.id"
-        title="Your turn" class="active-player-icon">front_hand</mat-icon>
+        class="active-player-icon">front_hand</mat-icon>
       {{labelText}}
     </label>
     <h6 *ngIf="direction == 'vertical'"

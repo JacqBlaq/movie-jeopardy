@@ -19,10 +19,9 @@ export interface IActivePlayer extends IPlayer {
 export class PlayersService {
 
   private storageName: string = 'players';
-  private defaultPlayer: IPlayer = { id: 1, name: '' };
-  private players: IPlayer[] = [this.defaultPlayer];
+  private players: IPlayer[] = [{ id: 1, name: '' }];
 
-  private players$: BehaviorSubject<IPlayer[]> = new BehaviorSubject<IPlayer[]>([this.defaultPlayer]);
+  private players$: BehaviorSubject<IPlayer[]> = new BehaviorSubject<IPlayer[]>([{ id: 1, name: '' }]);
   private activePlayerId$: BehaviorSubject<number> = new BehaviorSubject<number>(1);
 
   /**
@@ -102,6 +101,19 @@ export class PlayersService {
 
 
   /**
+   * Update player's score when they get an answer correct.
+   * @param {number} playerIndex - Index of player
+   * @param {number} points - Points added to player's overall score.
+   */
+  onScoreIncrease(playerIndex: number, points: number): void {
+    const score = this.players[playerIndex].score ?? 0;
+    this.players[playerIndex].score = score + points;
+
+    this.setPlayerSettings();
+  }
+
+
+  /**
    * Store the uploaded image as a player's avatar at the given index.
    *
    * @param {number} index - Index of player in array.
@@ -140,7 +152,7 @@ export class PlayersService {
    * Empty players array and update player settings.
    */
   onGameExit(): void {
-    this.players = [this.defaultPlayer];
+    this.players = [{ id: 1, name: '' }];
     this.setPlayerSettings();
   }
 

@@ -1,6 +1,6 @@
 import { Component, HostBinding, Input } from '@angular/core';
 
-type ButtonTheme = 'primary' | 'primary-inverse' | 'secondary' | 'secondary-inverse' | 'dark' | 'dark-inverse';
+export type ButtonTheme = 'primary' | 'primary-inverse' | 'secondary' | 'secondary-inverse' | 'dark' | 'dark-inverse';
 
 enum ButtonThemeClass {
   'primary' = 'jeo-button-primary',

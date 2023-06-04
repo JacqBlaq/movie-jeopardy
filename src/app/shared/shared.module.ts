@@ -5,6 +5,7 @@ import { JeoHeaderComponent } from './jeo-header/jeo-header.component';
 import { JeoButtonComponent } from './jeo-button/jeo-button.component';
 import { JeoContainerSlabComponent } from './jeo-container-slab/jeo-container-slab.component';
 import { MatIconModule } from '@angular/material/icon';
+import { MAT_TOOLTIP_DEFAULT_OPTIONS, MatTooltipDefaultOptions, MatTooltipModule } from '@angular/material/tooltip';
 import { MAT_DIALOG_DEFAULT_OPTIONS, MatDialogConfig, MatDialogModule } from '@angular/material/dialog';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -12,7 +13,8 @@ import { JeoAddPlayersComponent } from './jeo-add-players/jeo-add-players.compon
 import { JeoGameCardComponent } from './jeo-game-card/jeo-game-card.component';
 import { JeoQuestionComponent } from './jeo-question/jeo-question.component';
 import { JeoGamePlayerCardComponent } from './jeo-game-player-card/jeo-game-player-card.component';
-import { JeoAnswerComponent } from './jeo-question/jeo-answer/jeo-answer.component';
+import { JeoAnswerComponent } from './jeo-question/jeo-answer-choice/jeo-answer-choice.component';
+import { JeoConfirmModalComponent } from './jeo-confirm-modal/jeo-confirm-modal.component';
 
 
 @NgModule({
@@ -25,14 +27,16 @@ import { JeoAnswerComponent } from './jeo-question/jeo-answer/jeo-answer.compone
     JeoGameCardComponent,
     JeoQuestionComponent,
     JeoGamePlayerCardComponent,
-    JeoAnswerComponent
+    JeoAnswerComponent,
+    JeoConfirmModalComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
     HttpClientModule,
     MatIconModule,
-    MatDialogModule
+    MatDialogModule,
+    MatTooltipModule
   ],
   exports: [
     JeoContainerComponent,
@@ -42,7 +46,8 @@ import { JeoAnswerComponent } from './jeo-question/jeo-answer/jeo-answer.compone
     JeoAddPlayersComponent,
     JeoGamePlayerCardComponent,
     JeoGameCardComponent,
-    JeoQuestionComponent
+    JeoQuestionComponent,
+    JeoConfirmModalComponent
   ],
   providers: [
     {
@@ -52,6 +57,12 @@ import { JeoAnswerComponent } from './jeo-question/jeo-answer/jeo-answer.compone
         maxWidth: 750,
         hasBackdrop: true
       } as MatDialogConfig,
+    },
+    {
+      provide: MAT_TOOLTIP_DEFAULT_OPTIONS,
+      useValue: {
+        position: 'above'
+      }
     }
   ]
 })

@@ -6,7 +6,10 @@
       direction="horizontal">
     </jeo-game-player-card>
 
-    <button jeo-button type="button" theme="primary-inverse">Show answer</button>
+    <button jeo-button type="button" theme="primary-inverse"
+      (click)="showAnswer = true"
+      [disabled]="showAnswer"
+      matTooltip="Forfeit question points and reveal the correct answer.">Show answer</button>
   </div>
 
   <jeo-header [labelText]="question.modalTitle"></jeo-header>
@@ -16,9 +19,22 @@
       <h5>{{question.question}}</h5>
     </div>
 
-
+    <div class="jeo-answer-choices">
+      <ng-container *ngFor="let answer of question.answerChoices; index as i; even as even;">
+        <button jeo-answer-choice type="button"
+          [labelText]="answer"
+          [multipleChoiceKey]="multipleChoiceKeys[i]"
+          [disabled]="showAnswer"
+          [selectedAnswer]="selectedAnswer"
+          [attr.showAnswer]="showAnswer && answer == question.answer"
+          [attr.direction]="!even ? 'reverse' : ''"
+          (click)="selectedAnswer = answer"></button>
+      </ng-container>
+    </div>
 
   </jeo-container-slab>
 
-  <button jeo-button type="button" (click)="closeModal()">Submit</button>
+  <button jeo-button type="button"
+    [disabled]="selectedAnswer == '' && !showAnswer"
+    (click)="onCloseModal()">{{showAnswer ? 'Ok' : 'Submit'}}</button>
 </jeo-container>

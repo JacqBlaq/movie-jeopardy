@@ -1,5 +1,5 @@
 <div class="jeo-game-card"
-  (click)="onQuestionClick.emit()"
+  (click)="!isCleared ? onQuestionClick.emit() : ''"
   [class.jeo-category-card]="isCategory"
   [class.question-cleared]="isCleared">
 

@@ -11,7 +11,7 @@
   border: 1px solid $primaryColor;
   color: $txtColor;
 
-  &:hover {
+  &:not(:disabled):hover {
     background-color: $hoverColor;
     border: 1px solid $hoverColor;
   }
@@ -22,7 +22,7 @@
   border: 1px solid $primaryColor;
   color: $primaryColor;
 
-  &:hover {
+  &:not(:disabled):hover {
     background-color: $primaryColor;
     border: 1px solid $primaryColor;
     color: $inverseColor;

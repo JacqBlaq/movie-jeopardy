@@ -1,0 +1,85 @@
+@use '../abstract/variables' as var;
+
+
+[jeo-answer-choice] {
+  display: flex;
+  align-items: center;
+  position: relative;
+  border: none;
+  cursor: pointer;
+  background: none;
+
+  &:disabled {
+    cursor: default;
+  }
+}
+
+.jeo-answer-container {
+  padding: 10px 40px 10px 10px;
+  height: 60px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  background-color: white;
+  justify-content: end;
+  width: calc(100% - 25px);
+  color: var.$primary-periwinkle;
+  border: 1px solid var.$primary-periwinkle;
+  border-radius: var.$default-border-radius;
+
+  .answer-choice {
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+.jeo-answer-avatar {
+  height: 50px;
+  width: 50px;
+  display: flex;
+  border-radius: 999rem;
+  justify-content: center;
+  align-items: center;
+  background-color: var.$primary-periwinkle;
+  border: 1px double var.$primary-periwinkle;
+  outline: 2px solid white;
+  outline-offset: -3px;
+  color: white;
+  position: absolute;
+  right: 0;
+}
+
+[jeo-answer-choice]:not([direction="reverse"]) {
+  margin-right: 5px;
+}
+
+[jeo-answer-choice][direction="reverse"] {
+  flex-direction: row-reverse;
+  margin-left: 5px;
+
+  .jeo-answer-container {
+    padding: 10px 10px 10px 40px;
+    justify-content: start;
+  }
+
+  .jeo-answer-avatar {
+    left: 0;
+  }
+}
+
+[jeo-answer-choice]:not(:disabled):hover,
+[jeo-answer-choice]:not(:disabled).is-selected,
+[jeo-answer-choice][showAnswer=true] {
+  .jeo-answer-container {
+    background-color: var.$primary-periwinkle;
+    color: white;
+  }
+
+  .jeo-answer-avatar {
+    background-color: var.$primary-periwinkle-light;
+    border: 1px double var.$primary-periwinkle-light;
+  }
+}

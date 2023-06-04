@@ -10,7 +10,7 @@
   align-items: center;
   justify-content: center;
 
-  &:not(.jeo-category-card):hover {
+  &:not(.jeo-category-card):not(.question-cleared):hover {
     cursor: pointer;
     box-shadow: var.$default-box-shadow;
     background-color: var.$primary-periwinkle;
@@ -32,4 +32,5 @@
 
 .jeo-game-card.question-cleared {
   background: var.$primary-periwinkle-lightest;
+  cursor: default;
 }
