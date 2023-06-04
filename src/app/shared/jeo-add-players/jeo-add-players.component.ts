@@ -3,31 +3,50 @@ import { IPlayer, PlayersService } from 'src/app/services/players.service';
 
 @Component({
   selector: 'jeo-players',
-  templateUrl: './jeo-players.component.html'
+  templateUrl: './jeo-add-players.component.html'
 })
-export class JeoPlayersComponent {
+export class JeoAddPlayersComponent {
 
   currentPlayerIndex!: number;
 
   constructor(private playersService: PlayersService) { }
 
-  get players() {
+  /**
+   * Get list of players.
+   */
+  get players(): IPlayer[] {
     return this.playersService.getPlayers();
   }
 
+  /**
+   * Add a new player.
+   */
   onAddPlayer(): void {
     this.playersService.onAddPlayer();
   }
 
+  /**
+   * Remove a previously added player using their id.
+   * @param id Unique player id.
+   */
   onRemovePlayer(id: number): void {
     this.playersService.onRemovePlayer(id);
   }
 
+  /**
+   * Update a players name.
+   * @param index Player index in array.
+   * @param change Updated value for players name.
+   */
   onNameChange(index: number, change: string): void {
     this.playersService.onNameChange(index, change);
   }
 
-
+/**
+ * Uploads an image for a player's avatar.
+ * @param index Player index in array.
+ * @param e Event.
+ */
   onUploadAvatar(index: number, e: any): void {
     this.currentPlayerIndex = index;
     const file: File = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];

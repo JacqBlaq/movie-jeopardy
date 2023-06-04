@@ -7,8 +7,9 @@ import { JeoContainerSlabComponent } from './jeo-container-slab/jeo-container-sl
 import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { JeoPlayersComponent } from './jeo-players/jeo-players.component';
+import { JeoAddPlayersComponent } from './jeo-add-players/jeo-add-players.component';
 import { JeoGamePlayersComponent } from './jeo-game-players/jeo-game-players.component';
+import { JeoGameCardComponent } from './jeo-game-card/jeo-game-card.component';
 
 
 @NgModule({
@@ -17,8 +18,9 @@ import { JeoGamePlayersComponent } from './jeo-game-players/jeo-game-players.com
     JeoHeaderComponent,
     JeoButtonComponent,
     JeoContainerSlabComponent,
-    JeoPlayersComponent,
-    JeoGamePlayersComponent
+    JeoAddPlayersComponent,
+    JeoGamePlayersComponent,
+    JeoGameCardComponent
   ],
   imports: [
     CommonModule,
@@ -31,8 +33,9 @@ import { JeoGamePlayersComponent } from './jeo-game-players/jeo-game-players.com
     JeoContainerSlabComponent,
     JeoHeaderComponent,
     JeoButtonComponent,
-    JeoPlayersComponent,
-    JeoGamePlayersComponent
+    JeoAddPlayersComponent,
+    JeoGamePlayersComponent,
+    JeoGameCardComponent
   ]
 })
 export class SharedModule { }
