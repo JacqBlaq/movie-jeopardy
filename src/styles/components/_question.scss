@@ -1,0 +1,46 @@
+@use '../abstract/variables' as var;
+
+
+jeo-question {
+  width: 100%;
+  display: block;
+
+  .jeo-container {
+    background-color: var.$off-white;
+
+    .jeo-header-line {
+      background-color: var.$black-dark;
+    }
+  }
+
+  .jeo-container-slab {
+    height: calc(100% - 164px);
+    padding-top: 0;
+    transform: translateY(-18px);
+  }
+}
+
+.question-action-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 36px;
+}
+
+.jeo-question-bar {
+  background-color: var.$black-dark;
+  border: 1px solid var.$tertiary-orange;
+  padding: 15px;
+  color: white;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  border-radius: var.$default-border-radius;
+  margin-bottom: 50px;
+
+  h5 {
+    margin: 10px 0 0 0;
+  }
+}
+
+

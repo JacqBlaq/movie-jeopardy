@@ -1,0 +1,24 @@
+<jeo-container>
+  <div class="question-action-bar">
+    <jeo-game-player-card
+      [player]="question.activePlayer"
+      [activePlayerId]="question.activePlayer.id"
+      direction="horizontal">
+    </jeo-game-player-card>
+
+    <button jeo-button type="button" theme="primary-inverse">Show answer</button>
+  </div>
+
+  <jeo-header [labelText]="question.modalTitle"></jeo-header>
+
+  <jeo-container-slab>
+    <div class="jeo-question-bar">
+      <h5>{{question.question}}</h5>
+    </div>
+
+
+
+  </jeo-container-slab>
+
+  <button jeo-button type="button" (click)="closeModal()">Submit</button>
+</jeo-container>

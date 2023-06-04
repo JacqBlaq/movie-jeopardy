@@ -42,3 +42,10 @@ label {
 .d-block {
   display: block;
 }
+
+.text-truncate {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 100%;
+  white-space: nowrap;
+}

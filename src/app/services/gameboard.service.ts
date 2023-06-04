@@ -6,10 +6,12 @@ export interface IQuestion {
   points: number;
   answer: string;
   options: string[];
+  isCleared: boolean;
 }
 
 export interface ICategory {
-  category: string;
+  title: string;
+  isCleared: boolean;
   questions: IQuestion[];
 }
 
@@ -23,7 +25,7 @@ export class GameboardService {
 
   constructor() { }
 
-  getGameQuestions(): ICategory[] {
+  getQuestions(): ICategory[] {
     return this.categories;
   }
 }

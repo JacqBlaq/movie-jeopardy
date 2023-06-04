@@ -8,6 +8,10 @@ export interface IPlayer {
   score?: number;
 }
 
+export interface IActivePlayer extends IPlayer {
+  index: number;
+}
+
 
 @Injectable({
   providedIn: 'root'
@@ -15,16 +19,56 @@ export interface IPlayer {
 export class PlayersService {
 
   private storageName: string = 'players';
-  private players: IPlayer[] = [{ id: 1, name: '' }];
-  private players$: BehaviorSubject<IPlayer[]> = new BehaviorSubject<IPlayer[]>([{ id: 1, name: '' }]);
+  private defaultPlayer: IPlayer = { id: 1, name: '' };
+  private players: IPlayer[] = [this.defaultPlayer];
 
+  private players$: BehaviorSubject<IPlayer[]> = new BehaviorSubject<IPlayer[]>([this.defaultPlayer]);
+  private activePlayerId$: BehaviorSubject<number> = new BehaviorSubject<number>(1);
 
   /**
    * Get the current players.
-   * @returns Players array.
+   *
+   * @returns {IPlayer[]} Players array.
    */
   getPlayers(): IPlayer[] {
     return this.players$.value;
+  }
+
+
+  /**
+   * Get the 'id' of the player whose turn it is currently.
+   *
+   * @returns {number} Player's 'id'.
+   */
+  getActivePlayerId(): number {
+    return this.activePlayerId$.value;
+  }
+
+
+  /**
+   * Get the index of the player whose turn it is currently.
+   * @returns {number} Index of active player.
+   */
+  private getActivePlayerIndex(): number {
+    return this.getPlayerSettings().findIndex(p => p.id === this.getActivePlayerId());
+  }
+
+
+  /**
+   * Get the active player.
+   *
+   * @returns {IActivePlayer | undefined} Active player object.
+   */
+  getActivePlayerById(): IActivePlayer {
+    const foundPlayer = this.getPlayerSettings()
+      .find(p => p.id === this.getActivePlayerId()) || this.getPlayerSettings()[0];
+
+      const player: IActivePlayer = {
+      ...foundPlayer,
+      index: this.getActivePlayerIndex()
+    };
+
+    return player;
   }
 
 
@@ -46,7 +90,8 @@ export class PlayersService {
 
   /**
    * Remove a previously added player from game.
-   * @param id Unique player id.
+   *
+   * @param {number} id - Unique player id.
    */
   onRemovePlayer(id: number): void {
     if (this.players.length === 1) { return; }
@@ -58,8 +103,9 @@ export class PlayersService {
 
   /**
    * Store the uploaded image as a player's avatar at the given index.
-   * @param index Index of player in array.
-   * @param src Base64 string of image player uploaded.
+   *
+   * @param {number} index - Index of player in array.
+   * @param {string} src - Base64 string of image player uploaded.
    */
   onAvatarUpload(index: number, src: string): void {
     this.players[index].avatar = src;
@@ -69,8 +115,9 @@ export class PlayersService {
 
   /**
    * Store the updated value of a player's name at the given index.
-   * @param index Index of player in array.
-   * @param change Updated value of the player's name.
+   *
+   * @param {number} index - Index of player in array.
+   * @param {string} change - Updated value of the player's name.
    */
   onNameChange(index: number, change: string): void {
     this.players[index].name = change;
@@ -93,7 +140,7 @@ export class PlayersService {
    * Empty players array and update player settings.
    */
   onGameExit(): void {
-    this.players = [{ id: 1, name: ''}];
+    this.players = [this.defaultPlayer];
     this.setPlayerSettings();
   }
 
@@ -109,6 +156,8 @@ export class PlayersService {
 
   /**
    * Get array of players from localStorage.
+   *
+   * @returns {IPlayer[]} List of players.
    */
   getPlayerSettings(): IPlayer[] {
     const data = localStorage.getItem(this.storageName);

@@ -1,1 +1,14 @@
-<p>jeo-game-card works!</p>
+<div class="jeo-game-card"
+  (click)="onQuestionClick.emit()"
+  [class.jeo-category-card]="isCategory"
+  [class.question-cleared]="isCleared">
+
+  <ng-container *ngIf="!isCleared">
+    <h4 class="jeo-game-card-label category-label"
+    *ngIf="isCategory">{{labelText}}</h4>
+
+    <h1 class="jeo-game-card-label question-label"
+      *ngIf="!isCategory">{{labelText}}</h1>
+  </ng-container>
+
+</div>

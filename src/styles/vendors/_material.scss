@@ -1,0 +1,7 @@
+@use '../abstract/variables' as var;
+
+mat-dialog-container.mat-dialog-container {
+  padding: 0 !important;
+  border-radius: 0;
+  background-color: var.$off-white;
+}

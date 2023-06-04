@@ -1,0 +1,19 @@
+<div class="jeo-game-player"
+  [class.is-horizontal]="direction == 'horizontal'"
+  [class.is-active-player]="activePlayerId == player.id">
+  <div class="d-flex">
+    <div class="game-player-avatar"
+      [style.background]="player.avatar ? 'center / cover url(' + player.avatar + ')': '#fff'">
+      <mat-icon *ngIf="player.avatar == null">person</mat-icon>
+    </div>
+  </div>
+  <div class="game-player-info">
+    <label class="text-truncate">
+      <mat-icon *ngIf="activePlayerId == player.id"
+        title="Your turn" class="active-player-icon">front_hand</mat-icon>
+      {{labelText}}
+    </label>
+    <h6 *ngIf="direction == 'vertical'"
+      class="game-player-score">{{'$' + (player.score ?? '0')}}</h6>
+  </div>
+</div>

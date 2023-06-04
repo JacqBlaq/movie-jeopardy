@@ -5,11 +5,14 @@ import { JeoHeaderComponent } from './jeo-header/jeo-header.component';
 import { JeoButtonComponent } from './jeo-button/jeo-button.component';
 import { JeoContainerSlabComponent } from './jeo-container-slab/jeo-container-slab.component';
 import { MatIconModule } from '@angular/material/icon';
+import { MAT_DIALOG_DEFAULT_OPTIONS, MatDialogConfig, MatDialogModule } from '@angular/material/dialog';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { JeoAddPlayersComponent } from './jeo-add-players/jeo-add-players.component';
-import { JeoGamePlayersComponent } from './jeo-game-players/jeo-game-players.component';
 import { JeoGameCardComponent } from './jeo-game-card/jeo-game-card.component';
+import { JeoQuestionComponent } from './jeo-question/jeo-question.component';
+import { JeoGamePlayerCardComponent } from './jeo-game-player-card/jeo-game-player-card.component';
+import { JeoAnswerComponent } from './jeo-question/jeo-answer/jeo-answer.component';
 
 
 @NgModule({
@@ -19,14 +22,17 @@ import { JeoGameCardComponent } from './jeo-game-card/jeo-game-card.component';
     JeoButtonComponent,
     JeoContainerSlabComponent,
     JeoAddPlayersComponent,
-    JeoGamePlayersComponent,
-    JeoGameCardComponent
+    JeoGameCardComponent,
+    JeoQuestionComponent,
+    JeoGamePlayerCardComponent,
+    JeoAnswerComponent
   ],
   imports: [
     CommonModule,
-    MatIconModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatIconModule,
+    MatDialogModule
   ],
   exports: [
     JeoContainerComponent,
@@ -34,8 +40,19 @@ import { JeoGameCardComponent } from './jeo-game-card/jeo-game-card.component';
     JeoHeaderComponent,
     JeoButtonComponent,
     JeoAddPlayersComponent,
-    JeoGamePlayersComponent,
-    JeoGameCardComponent
+    JeoGamePlayerCardComponent,
+    JeoGameCardComponent,
+    JeoQuestionComponent
+  ],
+  providers: [
+    {
+      provide: MAT_DIALOG_DEFAULT_OPTIONS,
+      useValue: {
+        disableClose: true,
+        maxWidth: 750,
+        hasBackdrop: true
+      } as MatDialogConfig,
+    }
   ]
 })
 export class SharedModule { }

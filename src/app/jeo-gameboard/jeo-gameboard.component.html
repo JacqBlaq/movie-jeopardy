@@ -1,8 +1,14 @@
 <div class="jeo-gameboard-container p-20">
   <div class="jeo-gameboard-header d-flex">
+
     <div class="jeo-players d-flex">
-      <jeo-game-players [players]="players"></jeo-game-players>
+      <jeo-game-player-card *ngFor="let player of players; index as i"
+        [player]="player"
+        [activePlayerId]="activePlayerId"
+        [index]="i">
+      </jeo-game-player-card>
     </div>
+
     <div class="jeo-gameboard-buttons">
       <button jeo-button type="button" id="reset-button"
         (click)="resetScores()"
@@ -14,4 +20,17 @@
     </div>
   </div>
 
+  <div class="jeo-gameboard">
+    <div class="jeo-category-container" *ngFor="let cat of categoryQuestions">
+      <jeo-game-card [isCategory]="true"
+        [labelText]="cat.title"
+        [isCleared]="cat.isCleared"></jeo-game-card>
+
+      <jeo-game-card *ngFor="let question of cat.questions"
+        [isCategory]="false"
+        [isCleared]="cat.isCleared || question.isCleared"
+        [labelText]="question.points"
+        (onQuestionClick)="onQuestionClick(question, cat)"></jeo-game-card>
+    </div>
+  </div>
 </div>

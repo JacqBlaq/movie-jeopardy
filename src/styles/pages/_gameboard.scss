@@ -1,5 +1,13 @@
 @use '../abstract/variables' as var;
 
+// Grid sizes for categories and question cards.
+$col-w: calc(100% / 6);
+$col-width: $col-w $col-w $col-w $col-w $col-w $col-w;
+$row-h: calc((100% - 100px) / 5);
+$row-height: 100px $row-h $row-h $row-h $row-h $row-h;
+
+
+
 jeo-gameboard {
   display: contents;
 }
@@ -16,7 +24,7 @@ jeo-gameboard {
 
 .jeo-players {
   width: calc(100% - 113.81px);
-  text-align: center;
+  justify-content: center;
 }
 
 .jeo-gameboard-buttons {
@@ -27,4 +35,20 @@ jeo-gameboard {
   #exit-button {
     width: 113.81px;
   }
+}
+
+.jeo-gameboard {
+  padding-top: 15px;
+  height: calc(100% - 96px);
+  display: grid;
+  grid-template-columns: $col-width;
+  grid-template-rows: 100%;
+  grid-column-gap: 1px;
+}
+
+.jeo-category-container {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: $row-height;
+  grid-row-gap: 1px;
 }

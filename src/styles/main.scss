@@ -7,6 +7,7 @@
 
 @import './themes/material-theme';
 @import './vendors/bootstrap';
+@import './vendors/material';
 
 @import './layouts/grid';
 @import './layouts/header';
@@ -15,5 +16,8 @@
 @import './components/container';
 @import './components/add-player-card';
 @import './components/game-player-card';
+@import './components/game-card';
+@import './components/question';
+
 @import './pages/home';
 @import './pages/gameboard';

@@ -1,0 +1,35 @@
+@use '../abstract/variables' as var;
+
+
+.jeo-game-card {
+  background-color: var.$primary-periwinkle-light;
+  height: 100%;
+  text-align: center;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:not(.jeo-category-card):hover {
+    cursor: pointer;
+    box-shadow: var.$default-box-shadow;
+    background-color: var.$primary-periwinkle;
+  }
+
+  .jeo-game-card-label {
+    margin: 0 !important;
+  }
+
+  .question-label {
+    font-style: italic;
+  }
+}
+
+.jeo-category-card {
+  cursor: default !important;
+  background: transparent linear-gradient(180deg, var.$secondary-pink-lightest 0%, var.$secondary-pink 100%) 0% 0% no-repeat padding-box;
+}
+
+.jeo-game-card.question-cleared {
+  background: var.$primary-periwinkle-lightest;
+}
