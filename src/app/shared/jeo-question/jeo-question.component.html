@@ -1,5 +1,6 @@
 <jeo-container>
   <div class="question-action-bar">
+
     <jeo-game-player-card
       [player]="question.activePlayer"
       [activePlayerId]="question.activePlayer.id"
@@ -7,9 +8,9 @@
     </jeo-game-player-card>
 
     <button jeo-button type="button" theme="primary-inverse"
-      (click)="showAnswer = true"
-      [disabled]="showAnswer"
-      matTooltip="Forfeit question points and reveal the correct answer.">Show answer</button>
+      [disabled]="showAnswer || showResultMessage"
+      matTooltip="Forfeit points and reveal the correct answer."
+      (click)="onShowAnswer()">Reveal answer</button>
   </div>
 
   <jeo-header [labelText]="question.modalTitle"></jeo-header>
@@ -32,9 +33,16 @@
       </ng-container>
     </div>
 
+    <h5 *ngIf="showResultMessage"
+      class="jeo-answer-result"
+      [class.jeo-answer-incorrect]="!isCorrectAnswer">
+      <mat-icon>{{isCorrectAnswer ? 'celebration' : 'sentiment_very_dissatisfied'}}</mat-icon>
+      {{(isCorrectAnswer ? 'Correct! $' + question.points : 'Incorrect. No') + ' points awarded to ' + question.activePlayer.name + '.'}}
+    </h5>
+
   </jeo-container-slab>
 
   <button jeo-button type="button"
     [disabled]="selectedAnswer == '' && !showAnswer"
-    (click)="onCloseModal()">{{showAnswer ? 'Ok' : 'Submit'}}</button>
+    (click)="onCloseModal()">{{btnText}}</button>
 </jeo-container>

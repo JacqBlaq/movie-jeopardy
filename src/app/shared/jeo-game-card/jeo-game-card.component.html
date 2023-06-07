@@ -1,14 +1,11 @@
 <div class="jeo-game-card"
-  (click)="!isCleared ? onQuestionClick.emit() : ''"
-  [class.jeo-category-card]="isCategory"
-  [class.question-cleared]="isCleared">
+  [class.jeo-category-card]="intent == 'category'"
+  [class.is-cleared]="isCleared"
+  (click)="onCardClick()">
 
-  <ng-container *ngIf="!isCleared">
-    <h4 class="jeo-game-card-label category-label"
-    *ngIf="isCategory">{{labelText}}</h4>
+  <h4 class="jeo-game-card-label category-label"
+    *ngIf="intent == 'category'">{{labelText}}</h4>
 
-    <h1 class="jeo-game-card-label question-label"
-      *ngIf="!isCategory">{{labelText}}</h1>
-  </ng-container>
-
+  <h2 class="jeo-game-card-label question-label"
+    *ngIf="intent == 'question'">${{labelText}}</h2>
 </div>

@@ -1,72 +1,79 @@
 import { Component } from '@angular/core';
-import { IPlayer, PlayersService } from 'src/app/services/players.service';
+import { IPlayer, PlayerService } from 'src/app/services/player/player.service';
 
 @Component({
-  selector: 'jeo-players',
-  templateUrl: './jeo-add-players.component.html'
+	selector: 'jeo-players',
+	templateUrl: './jeo-add-players.component.html',
 })
 export class JeoAddPlayersComponent {
+	private _currPlayerIndex!: number;
 
-  currentPlayerIndex!: number;
+	/**
+	 * @param {PlayerService} playerService - Service that handles player functions.
+	 */
+	constructor(private readonly playerService: PlayerService) {}
 
-  constructor(private playersService: PlayersService) { }
+	/**
+	 * @description
+	 * Get list of all players.
+	 */
+	get players(): IPlayer[] {
+		return this.playerService.getPlayers();
+	}
 
-  /**
-   * Get list of players.
-   */
-  get players(): IPlayer[] {
-    return this.playersService.getPlayers();
-  }
+	/**
+	 * @description
+	 * Add a new player.
+	 */
+	onAddPlayer(): void {
+		this.playerService.onAddPlayer();
+	}
 
-  /**
-   * Add a new player.
-   */
-  onAddPlayer(): void {
-    this.playersService.onAddPlayer();
-  }
+	/**
+	 * @description
+	 * Remove a previously added player.
+	 *
+	 * @param {number} playerId - Unique player id.
+	 */
+	onRemovePlayer(playerId: number): void {
+		this.playerService.onRemovePlayer(playerId);
+	}
 
-  /**
-   * Remove a previously added player using their id.
-   * @param id Unique player id.
-   */
-  onRemovePlayer(id: number): void {
-    this.playersService.onRemovePlayer(id);
-  }
+	/**
+	 * @description
+	 * Update a player's name.
+	 *
+	 * @param {number} index - Player index in array.
+	 * @param {string} change - Updated value for players name.
+	 */
+	onNameChange(index: number, change: string): void {
+		this.playerService.onNameChange(index, change);
+	}
 
-  /**
-   * Update a players name.
-   * @param index Player index in array.
-   * @param change Updated value for players name.
-   */
-  onNameChange(index: number, change: string): void {
-    this.playersService.onNameChange(index, change);
-  }
+	/**
+	 * @description
+	 * Upload an image to be used as a player's avatar.
+	 *
+	 * @param {number} index Player index in array.
+	 * @param {Event | any} event Upload event.
+	 */
+	onUploadAvatar(index: number, event: Event | any): void {
+		this._currPlayerIndex = index;
+		const pattern = /image-*/;
+		const reader = new FileReader();
+		const file: File = event.target?.files[0];
 
-/**
- * Uploads an image for a player's avatar.
- * @param index Player index in array.
- * @param e Event.
- */
-  onUploadAvatar(index: number, e: any): void {
-    this.currentPlayerIndex = index;
-    const file: File = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
+		if (!file.type.match(pattern)) {
+			alert('invalid format');
+			return;
+		}
 
-    if (file) {
-      var pattern = /image-*/;
-      var reader = new FileReader();
-      if (!file.type.match(pattern)) {
-        alert('invalid format');
-        return;
-      }
-      reader.onload = this._handleReaderLoaded.bind(this);
-      reader.readAsDataURL(file);
-    }
-  }
+		reader.readAsDataURL(file);
+		reader.onload = (): void => {
+			const base64 = reader.result as string;
 
-  _handleReaderLoaded(e: any) {
-    let reader = e.target;
-    if (this.currentPlayerIndex > -1)
-      this.playersService.onAvatarUpload(this.currentPlayerIndex, reader.result);
-  }
-
+			if (this._currPlayerIndex > -1)
+				this.playerService.onAvatarUpload(this._currPlayerIndex, base64);
+		};
+	}
 }

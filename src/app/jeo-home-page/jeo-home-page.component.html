@@ -1,4 +1,4 @@
-<jeo-container size="large">
+<jeo-container>
   <jeo-header labelText="Rules"></jeo-header>
 
   <jeo-container-slab>
@@ -7,7 +7,8 @@
       <li>Game is played by picking a category and a point value then answering the prompted question.</li>
       <li>All questions are multiple choice with four options.</li>
       <li>Player must answer question correctly to gain point value.</li>
-      <li>Player with the most point at the end of the game wins.</li>
+      <li>Game can be resetted </li>
+      <li>Player with the most points at the end of the game wins.</li>
     </ol>
 
     <jeo-header labelText="Players"></jeo-header>
@@ -16,5 +17,7 @@
 
   </jeo-container-slab>
 
-  <a routerLink="/gameboard" jeo-button type="button" theme="primary">Lets Play!</a>
+  <a jeo-button type="button" theme="primary"
+    routerLink="/gameboard"
+    (click)="setDefaultValues()">Lets Play!</a>
 </jeo-container>

@@ -5,15 +5,8 @@ import { JeoGameboardRoutingModule } from './jeo-gameboard-routing.module';
 import { JeoGameboardComponent } from './jeo-gameboard.component';
 import { SharedModule } from '../shared/shared.module';
 
-
 @NgModule({
-  declarations: [
-    JeoGameboardComponent
-  ],
-  imports: [
-    CommonModule,
-    JeoGameboardRoutingModule,
-    SharedModule
-  ]
+	declarations: [JeoGameboardComponent],
+	imports: [CommonModule, JeoGameboardRoutingModule, SharedModule],
 })
-export class JeoGameboardModule { }
+export class JeoGameboardModule {}

@@ -1,34 +1,30 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { IPlayer } from 'src/app/services/players.service';
+import { Component, Input } from '@angular/core';
+import { IPlayer } from 'src/app/services/player/player.service';
 
 @Component({
-  selector: 'jeo-game-player-card',
-  templateUrl: './jeo-game-player-card.component.html'
+	selector: 'jeo-game-player-card',
+	templateUrl: './jeo-game-player-card.component.html',
 })
-export class JeoGamePlayerCardComponent implements OnInit {
+export class JeoGamePlayerCardComponent {
+	private _player!: IPlayer;
+	labelText: string = '';
 
-  private _player!: IPlayer;
-  labelText: string = '';
+	@Input() index: number = 0;
+	@Input() activePlayerId: number = 1;
+	@Input() direction: 'vertical' | 'horizontal' = 'vertical';
 
-  @Input() index: number = 0;
-  @Input() activePlayerId: number = 1;
-  @Input() direction: 'vertical' | 'horizontal' = 'vertical';
+	/** Object containing player data. */
+	@Input() get player(): IPlayer {
+		return this._player;
+	}
 
-  @Input() get player(): IPlayer {
-    return this._player;
-  }
-
-  set player(value: IPlayer) {
-    this._player = value;
-
-    const playerName = this.player.name || ('Player ' + (this.index+1));
-    this.labelText = `${playerName}`;
-  }
-
-  constructor() { }
-
-  ngOnInit(): void {
-
-  }
-
+	/**
+	 * @description
+	 * Updates player object whenever there's a change.
+	 *
+	 * @param {IPlayer} value - Updated player object.
+	 */
+	set player(value: IPlayer) {
+		this._player = value;
+	}
 }

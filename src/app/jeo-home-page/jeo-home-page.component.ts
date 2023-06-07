@@ -1,14 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { PlayerService } from '../services/player/player.service';
 
 @Component({
-  selector: 'jeo-home-page',
-  templateUrl: './jeo-home-page.component.html'
+	selector: 'jeo-home-page',
+	templateUrl: './jeo-home-page.component.html',
 })
-export class JeoHomePageComponent implements OnInit {
+export class JeoHomePageComponent {
 
-  constructor() { }
+	/**
+	 * @param {PlayerService} playerService - Player service.
+	 */
+	constructor(private readonly playerService: PlayerService) {}
 
-  ngOnInit(): void {
-  }
-
+	/** Set default values before starting game. */
+	setDefaultValues(): void {
+		this.playerService.setDefaultValues();
+	}
 }

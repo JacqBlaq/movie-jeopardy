@@ -11,8 +11,8 @@
 
     <div class="jeo-gameboard-buttons">
       <button jeo-button type="button" id="reset-button"
-        (click)="resetScores()"
-        theme="dark-inverse">Reset Scores</button>
+        (click)="restartGame()"
+        theme="dark-inverse">Restart Game</button>
       <a jeo-button routerLink="/"
         (click)="exitGame()"
         type="button" id="exit-button"
@@ -22,15 +22,14 @@
 
   <div class="jeo-gameboard">
     <div class="jeo-category-container" *ngFor="let cat of categoryQuestions">
-      <jeo-game-card [isCategory]="true"
-        [labelText]="cat.title"
-        [isCleared]="cat.isCleared"></jeo-game-card>
+      <jeo-game-card [labelText]="cat.title"></jeo-game-card>
 
       <jeo-game-card *ngFor="let question of cat.questions"
-        [isCategory]="false"
-        [isCleared]="cat.isCleared || question.isCleared"
+        intent="question"
+        [isCleared]="question.isCleared"
         [labelText]="question.points"
-        (onQuestionClick)="onQuestionClick(question, cat)"></jeo-game-card>
+        (onQuestionClick)="onQuestionClick(question, cat)">
+      </jeo-game-card>
     </div>
   </div>
 </div>

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { IActivePlayer, IPlayer } from './players.service';
+import { IActivePlayer } from './player/player.service';
 import categoryJson from '../../assets/data/game-questions.json';
 
-export interface IQuestion {
+export type IQuestion = {
   question: string;
   points: number;
   answer: string;
@@ -10,13 +10,12 @@ export interface IQuestion {
   isCleared: boolean;
 }
 
-export interface ICategory {
+export type ICategory = {
   title: string;
-  isCleared: boolean;
   questions: IQuestion[];
 }
 
-export interface IQuestionModal {
+export type IQuestionModal = {
   categoryTitle: string;
   points: number;
   question: string;
@@ -30,11 +29,13 @@ export interface IQuestionModal {
   providedIn: 'root'
 })
 export class QuestionService {
+  private categories: ICategory[] = categoryJson;
 
-  categories: ICategory[] = categoryJson;
-
-  constructor() { }
-
+  /**
+   * Get list of all questions.
+   *
+   * @returns {ICategory[]} List of all questions.
+   */
   getQuestions(): ICategory[] {
     return this.categories;
   }
@@ -42,13 +43,11 @@ export class QuestionService {
   /**
    * Reset 'isCleared' property in each category and question.
    */
-  onGameExit(): void {
-    this.categories.forEach(c => {
-      c.isCleared = false;
-      c.questions.forEach(q => {
-        q.isCleared = false;
+  resetQuestions(): void {
+    this.categories.forEach(cat => {
+      cat.questions.forEach(ques => {
+        ques.isCleared = false;
       });
     });
   }
-
 }

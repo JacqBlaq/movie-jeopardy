@@ -13,7 +13,15 @@ jeo-game-players {
   &.is-active-player {
 
     .game-player-avatar, .game-player-info {
-      border: 1.5px solid var.$tertiary-orange
+      border: 1.5px solid var.$tertiary-orange;
+    }
+
+     &:not(.is-horizontal) .game-player-info {
+      color: var.$black-dark;
+      background-color: var.$tertiary-orange;
+      .game-player-score, .active-player-icon {
+        color: var.$black-dark;
+      }
     }
   }
 
@@ -39,6 +47,7 @@ jeo-game-players {
   padding: 3px 10px;
   color: white;
   width: 136px;
+  border-radius: var.$default-border-radius;
 
   label {
     margin: 0;

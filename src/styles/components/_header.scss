@@ -1,0 +1,46 @@
+@use '../abstract/variables' as var;
+@use '../abstract/mixins' as mix;
+
+.jeo-header {
+	position: relative;
+	text-align: center;
+}
+
+.jeo-header-line {
+	height: 0.0625rem;
+	width: 100%;
+	position: absolute;
+	top: 50%;
+	background-color: var.$secondary-pink;
+}
+
+.jeo-header-title {
+	height: 3.125rem;
+	z-index: 1;
+	position: relative;
+	text-align: center;
+	padding: 0.3125rem 0.9375rem;
+	border-radius: 0.25rem;
+	padding: 0 5rem;
+	display: inline-flex;
+	background-color: var.$secondary-pink;
+
+	.jeo-header-text {
+		color: white;
+		margin: auto !important;
+	}
+}
+
+.jeo-header {
+	&.warning-header {
+		@include mix.style-header($bg-color: var.$tertiary-orange);
+	}
+
+	&.danger-header {
+		@include mix.style-header($bg-color: var.$danger-red);
+	}
+
+	&.dark-header {
+		@include mix.style-header($bg-color: var.$black-dark);
+	}
+}

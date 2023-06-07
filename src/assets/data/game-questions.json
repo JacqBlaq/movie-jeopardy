@@ -1,7 +1,6 @@
 [
   {
     "title": "Harry Porter",
-    "isCleared": false,
     "questions": [
       {
         "points": 200,
@@ -67,7 +66,6 @@
   },
   {
     "title": "Lord of the Rings",
-    "isCleared": false,
     "questions": [
       {
         "points": 200,
@@ -133,7 +131,6 @@
   },
   {
     "title": "Shrek",
-    "isCleared": false,
     "questions": [
       {
         "points": 200,
@@ -199,7 +196,6 @@
   },
   {
     "title": "The Hobbit",
-    "isCleared": false,
     "questions": [
       {
         "points": 200,
@@ -265,7 +261,6 @@
   },
   {
     "title": "The Twilight Saga",
-    "isCleared": false,
     "questions": [
       {
         "points": 200,
@@ -331,7 +326,6 @@
   },
   {
     "title": "Lion King",
-    "isCleared": false,
     "questions": [
       {
         "points": 200,

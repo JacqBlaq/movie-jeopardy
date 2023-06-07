@@ -1,36 +1,31 @@
-@mixin rtl($property, $ltr-value, $rtl-value) {
-  #{$property}: $ltr-value;
+@mixin jeo-button(
+	$hov-color,
+	$bg-color: white,
+	$txt-color: white,
+	$inverse: false
+) {
+	background-color: $bg-color;
+	border: 0.0625rem solid $bg-color;
+	color: $txt-color;
 
-  [dir=rtl] & {
-    #{$property}: $rtl-value;
-  }
+	@if $inverse {
+		color: $hov-color;
+		border-color: $hov-color;
+	}
+
+	&:not(:disabled):hover {
+		background-color: $hov-color;
+		border: 1px solid $hov-color;
+
+		@if $inverse {
+			color: white;
+		}
+	}
 }
 
-@mixin styleJeoButton($primaryColor, $txtColor, $hoverColor) {
-  background-color: $primaryColor;
-  border: 1px solid $primaryColor;
-  color: $txtColor;
-
-  &:not(:disabled):hover {
-    background-color: $hoverColor;
-    border: 1px solid $hoverColor;
-  }
-}
-
-@mixin styleInverseJeoButton($primaryColor, $inverseColor) {
-  background-color: $inverseColor;
-  border: 1px solid $primaryColor;
-  color: $primaryColor;
-
-  &:not(:disabled):hover {
-    background-color: $primaryColor;
-    border: 1px solid $primaryColor;
-    color: $inverseColor;
-  }
-}
-
-@mixin styleHeader($bgColor) {
-  .jeo-header-line, .jeo-header-title {
-    background-color: $bgColor
-  }
+@mixin style-header($bg-color) {
+	.jeo-header-line,
+	.jeo-header-title {
+		background-color: $bg-color;
+	}
 }

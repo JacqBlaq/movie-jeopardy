@@ -1,31 +1,40 @@
-import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
-  selector: 'jeo-game-card',
-  templateUrl: './jeo-game-card.component.html'
+	selector: 'jeo-game-card',
+	templateUrl: './jeo-game-card.component.html',
 })
-export class JeoGameCardComponent implements OnInit {
+export class JeoGameCardComponent {
+	private _isCleared: boolean = false;
 
-  private _isCleared: boolean = false;
+	/** Intended usage of card. */
+	@Input() intent: 'category' | 'question' = 'category';
 
-  @Input() isCategory: boolean = false;
-  @Input() labelText!: string | number;
+	/** Text displayed on card. */
+	@Input() labelText!: string | number;
 
-  @Input() get isCleared(): boolean {
-    return this._isCleared;
-  }
+	/** Whether a 'question' card has already been viewed. */
+	@Input() get isCleared(): boolean {
+		return this._isCleared;
+	}
 
-  set isCleared(value: boolean) {
-    this._isCleared = value;
-  }
+	/**
+	 * @param {boolean} value - Updated value for 'isCleared'.
+	 */
+	set isCleared(value: boolean) {
+		this._isCleared = value;
+	}
 
-  @Output() onQuestionClick: EventEmitter<any> = new EventEmitter<any>();
+	/** Triggers and event when a 'question' card is clicked. */
+	@Output() onQuestionClick = new EventEmitter<unknown>();
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
-
-
+	/**
+	 * Checks if a 'question' card hasn't been viewed yet before triggering
+	 * an event.
+	 */
+	onCardClick(): void {
+		if (!this.isCleared) {
+			this.onQuestionClick.emit();
+		}
+	}
 }

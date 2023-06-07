@@ -1,35 +1,35 @@
 @use '../abstract/variables' as var;
 
 h1 {
-  font-size: var.$h1-font-size !important;
-  font-weight: var.$font-weight-heavy !important;
+	font-size: var.$h1-font-size !important;
+	font-weight: var.$font-weight-heavy !important;
 }
 
 h2 {
-  font-size: var.$h2-font-size !important;
-  font-weight: var.$font-weight-bold !important;
+	font-size: var.$h2-font-size !important;
+	font-weight: var.$font-weight-bold !important;
 }
 
 h3 {
-  font-size: var.$h3-font-size !important;
-  font-weight: var.$font-weight-bold !important;
+	font-size: var.$h3-font-size !important;
+	font-weight: var.$font-weight-bold !important;
 }
 
 h4 {
-  font-size: var.$h4-font-size !important;
-  font-weight: var.$font-weight-semi-bold !important;
-  margin: 0 !important;
+	font-size: var.$h4-font-size !important;
+	font-weight: var.$font-weight-semi-bold !important;
+	margin: 0 !important;
 }
 
 h5 {
-  font-size: var.$h5-font-size !important;
-  font-weight: var.$font-weight-semi-bold !important;
-  line-height: 27px !important;
-  margin: 0 !important;
+	font-size: var.$h5-font-size !important;
+	font-weight: var.$font-weight-semi-bold !important;
+	line-height: 1.6875rem !important;
+	margin: 0 !important;
 }
 
 h6 {
-  font-size: var.$h6-font-size !important;
-  font-weight: var.$font-weight-semi-bold !important;
-  margin: 0 !important;
+	font-size: var.$h6-font-size !important;
+	font-weight: var.$font-weight-semi-bold !important;
+	margin: 0 !important;
 }

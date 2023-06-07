@@ -2,12 +2,10 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { JeoGameboardComponent } from './jeo-gameboard.component';
 
-const routes: Routes = [
-  { path: '', component: JeoGameboardComponent },
-];
+const routes: Routes = [{ path: '', component: JeoGameboardComponent }];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+	imports: [RouterModule.forChild(routes)],
+	exports: [RouterModule],
 })
-export class JeoGameboardRoutingModule { }
+export class JeoGameboardRoutingModule {}

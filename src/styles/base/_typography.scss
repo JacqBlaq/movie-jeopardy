@@ -1,53 +1,51 @@
-@use '../abstract/variables' as v;
+@use '../abstract/variables' as var;
 
 $font-display: 'auto';
 
-
 @font-face {
-  font-family: v.$font-family-body;
-  src: url('../../assets/fonts/Lato/Lato-Thin.ttf');
-  font-weight: 200;
-  font-display: $font-display;
+	font-family: var.$font-family-body;
+	src: url('../../assets/fonts/Lato/Lato-Thin.ttf');
+	font-weight: 200;
+	font-display: $font-display;
 }
 
 @font-face {
-  font-family: v.$font-family-body;
-  src: url('../../assets/fonts/Lato/Lato-Light.ttf');
-  font-weight: 300;
-  font-display: $font-display;
+	font-family: var.$font-family-body;
+	src: url('../../assets/fonts/Lato/Lato-Light.ttf');
+	font-weight: 300;
+	font-display: $font-display;
 }
 
 @font-face {
-  font-family: v.$font-family-body;
-  src: url('../../assets/fonts/Lato/Lato-Regular.ttf');
-  font-weight: 400;
-  font-display: $font-display;
+	font-family: var.$font-family-body;
+	src: url('../../assets/fonts/Lato/Lato-Regular.ttf');
+	font-weight: 400;
+	font-display: $font-display;
 }
 
 @font-face {
-  font-family: v.$font-family-body;
-  src: url('../../assets/fonts/Lato/Lato-Bold.ttf');
-  font-weight: 600;
-  font-display: $font-display;
+	font-family: var.$font-family-body;
+	src: url('../../assets/fonts/Lato/Lato-Bold.ttf');
+	font-weight: 600;
+	font-display: $font-display;
 }
 
 @font-face {
-  font-family: v.$font-family-body;
-  src: url('../../assets/fonts/Lato/Lato-Black.ttf');
-  font-weight: 900;
-  font-display: $font-display;
+	font-family: var.$font-family-body;
+	src: url('../../assets/fonts/Lato/Lato-Black.ttf');
+	font-weight: 900;
+	font-display: $font-display;
 }
 
 @font-face {
-  font-family: v.$font-family-title;
-  src: url('../../assets/fonts/harlow-solid/harlow-solid-regular.ttf');
-  font-weight: 600;
-  font-display: $font-display;
+	font-family: var.$font-family-title;
+	src: url('../../assets/fonts/harlow-solid/harlow-solid-regular.ttf');
+	font-weight: 600;
+	font-display: $font-display;
 }
-
 
 body {
-  font-family: v.$font-family-body;
-  font-size: v.$font-size-body;
-  font-weight: v.$font-weight-regular;
+	font-family: var.$font-family-body;
+	font-size: var.$font-size-body;
+	font-weight: var.$font-weight-regular;
 }

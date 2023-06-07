@@ -3,52 +3,49 @@
 // Grid sizes for categories and question cards.
 $col-w: calc(100% / 6);
 $col-width: $col-w $col-w $col-w $col-w $col-w $col-w;
-$row-h: calc((100% - 100px) / 5);
-$row-height: 100px $row-h $row-h $row-h $row-h $row-h;
-
-
+$row-h: calc((100% - 6.25rem) / 5);
+$row-height: 6.25rem $row-h $row-h $row-h $row-h $row-h;
 
 jeo-gameboard {
-  display: contents;
+	display: contents;
 }
 
 .jeo-gameboard-container {
-  width: 100%;
-  height: calc(100vh - 170px);
-  margin: 0 50px;
-  background-color: white;
-  border: 1px solid var.$primary-periwinkle;
-  box-shadow: var.$default-box-shadow;
-
+	width: 100%;
+	height: calc(100vh - 10.625rem);
+	margin: 0 3.125rem;
+	background-color: white;
+	border: 0.0625rem solid var.$primary-periwinkle;
+	box-shadow: var.$default-box-shadow;
 }
 
 .jeo-players {
-  width: calc(100% - 113.81px);
-  justify-content: center;
+	width: calc(100% - 7.1131rem);
+	justify-content: center;
 }
 
 .jeo-gameboard-buttons {
-  #reset-button {
-    margin-bottom: 15px;
-  }
+	#reset-button {
+		margin-bottom: 0.9375rem;
+	}
 
-  #exit-button {
-    width: 113.81px;
-  }
+	#exit-button {
+		width: 7.1131rem;
+	}
 }
 
 .jeo-gameboard {
-  padding-top: 15px;
-  height: calc(100% - 96px);
-  display: grid;
-  grid-template-columns: $col-width;
-  grid-template-rows: 100%;
-  grid-column-gap: 1px;
+	padding-top: 0.9375rem;
+	height: calc(100% - 6rem);
+	display: grid;
+	grid-template-columns: $col-width;
+	grid-template-rows: 100%;
+	grid-column-gap: 0.0625rem;
 }
 
 .jeo-category-container {
-  display: grid;
-  grid-template-columns: 100%;
-  grid-template-rows: $row-height;
-  grid-row-gap: 1px;
+	display: grid;
+	grid-template-columns: 100%;
+	grid-template-rows: $row-height;
+	grid-row-gap: 0.0625rem;
 }

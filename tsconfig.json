@@ -9,6 +9,8 @@
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
+    "allowJs": true,
+    "checkJs": true,
     "noFallthroughCasesInSwitch": true,
     "sourceMap": true,
     "declaration": false,

@@ -1,0 +1,26 @@
+{
+  // "css.validate": false,
+  // "less.validate": false,
+  // "scss.validate": false,
+  "[typescript]": {
+	"editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[scss]": {
+	"editor.defaultFormatter": null,
+	"editor.tabSize": 2,
+	"editor.detectIndentation": true
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": false,
+  "prettier.stylelintIntegration": true,
+  "stylelint.enable": true,
+  "stylelint.validate": [
+    "css",
+    "scss"
+  ],
+  "eslint.validate": [
+	"typescript",
+	"scss"
+  ],
+  "js/ts.implicitProjectConfig.checkJs": true
+}

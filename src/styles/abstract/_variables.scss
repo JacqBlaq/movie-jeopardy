@@ -1,81 +1,83 @@
 // Colors
-$primary-periwinkle: #6974C5;
-$primary-periwinkle-light: #8E97D3;
-$primary-periwinkle-lightest: #B3B9E2;
+$primary-periwinkle: #6974c5;
+$primary-periwinkle-light: #8e97d3;
+$primary-periwinkle-lightest: #b3b9e2;
 
-$secondary-pink: #C375C3;
-$secondary-pink-light: #D297D2;
-$secondary-pink-lightest: #E1B9E1;
+$secondary-pink: #c375c3;
+$secondary-pink-light: #d297d2;
+$secondary-pink-lightest: #e1b9e1;
 
-$tertiary-orange: #FFC768;
-$tertiary-orange-light: #FFD58E;
-$tertiary-orange-lightest: #FFE3B3;
+$tertiary-orange: #ffc768;
+$tertiary-orange-light: #ffd58e;
+$tertiary-orange-lightest: #ffe3b3;
+
+$tertiary-pink: #ff7da8;
+$tertiary-pink-light: #ff9dbe;
+$tertiary-pink-lightest: #ffbdd3;
 
 $black-dark: #232323;
-$black-dark-light: #5A5A5A;
+$black-dark-light: #5a5a5a;
 
-$danger-red: #B64848;
+$danger-red: #b64848;
 
 $gray: #909090;
-$gray-light: #C7C7C7;
+$gray-light: #c7c7c7;
 $off-white: #f8f8f8;
 
 $primary-palette: (
- 50: #eaebf7,
- 100: #c9ceeb,
- 200: #a6aede,
- 300: #838ed0,
- 400: $primary-periwinkle,
- 500: #505bbb,
- 600: #4a52b0,
- 700: #4148a4,
- 800: #3a3e98,
- 900: #2d2c83,
- contrast: (
-   50: $black-dark,
-   100: $black-dark,
-   200: $black-dark,
-   300: $black-dark,
-   400: white,
-   500: white,
-   600: white,
-   700: white,
-   800: white,
-   900: white
- )
+	50: #eaebf7,
+	100: #c9ceeb,
+	200: #a6aede,
+	300: #838ed0,
+	400: $primary-periwinkle,
+	500: #505bbb,
+	600: #4a52b0,
+	700: #4148a4,
+	800: #3a3e98,
+	900: #2d2c83,
+	contrast: (
+		50: $black-dark,
+		100: $black-dark,
+		200: $black-dark,
+		300: $black-dark,
+		400: white,
+		500: white,
+		600: white,
+		700: white,
+		800: white,
+		900: white,
+	),
 );
 
 $secondary-palette: (
- 50: #f4e7f4,
- 100: #e5c3e5,
- 200: #d59cd5,
- 300: $secondary-pink,
- 400: #b558b5,
- 500: #a93eab,
- 600: #9c39a4,
- 700: #8a329c,
- 800: #7a2d94,
- 900: #5e2385,
- contrast: (
-  50: $black-dark,
-  100: $black-dark,
-  200: $black-dark,
-  300: white,
-  400: white,
-  500: white,
-  600: white,
-  700: white,
-  800: white,
-  900: white
- )
+	50: #f4e7f4,
+	100: #e5c3e5,
+	200: #d59cd5,
+	300: $secondary-pink,
+	400: #b558b5,
+	500: #a93eab,
+	600: #9c39a4,
+	700: #8a329c,
+	800: #7a2d94,
+	900: #5e2385,
+	contrast: (
+		50: $black-dark,
+		100: $black-dark,
+		200: $black-dark,
+		300: white,
+		400: white,
+		500: white,
+		600: white,
+		700: white,
+		800: white,
+		900: white,
+	),
 );
-
-
 
 // Font-family
 $font-family-body: 'lato';
 $font-family-title: 'harlow-solid';
-$font-size-body: 14px;
+$font-size-body: 0.875rem;
 
 // Font weights
 $font-weight-heavy: 900;
@@ -85,7 +87,6 @@ $font-weight-regular: 400;
 $font-weight-light: 300;
 $font-weight-thin: 200;
 
-
 // Typography sizes
 $h1-font-size: 3.125rem;
 $h2-font-size: 2.375rem;
@@ -93,12 +94,11 @@ $h3-font-size: 2rem;
 $h4-font-size: 1.75rem;
 $h5-font-size: 1.375rem;
 $h6-font-size: 1.25rem;
-$body-font-size: 14px;
+$body-font-size: 0.875rem;
 
 // Buttons
 $jeo-button-height: 2.4375rem;
-$jeo-button-padding: 0.625rem 1rem;
-
+$jeo-button-padding: 0.625rem 0.875rem;
 
 $default-box-shadow: 0 3px 1px -2px #0003, 0 2px 2px #00000024, 0 1px 5px #0000001f;
-$default-border-radius: 4px;
+$default-border-radius: 0.25rem;

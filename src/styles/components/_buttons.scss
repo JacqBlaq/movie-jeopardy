@@ -1,63 +1,56 @@
 @use '../abstract/variables' as var;
 @use '../abstract/mixins' as mix;
 
-
 // Base button style
 .jeo-button {
-  height: var.$jeo-button-height;
-  padding: var.$jeo-button-padding;
-  box-shadow: var.$default-box-shadow;
-  text-align: center;
-  cursor: pointer;
-  display: block;
+	height: var.$jeo-button-height;
+	padding: var.$jeo-button-padding;
+	box-shadow: var.$default-box-shadow;
+	text-align: center;
+	cursor: pointer;
+	display: block;
+	min-width: 4.6875rem;
 
-  &:focus, &:active {
-    filter: brightness(75%) !important;
-  }
-
-  &:disabled {
-    background-color: var.$gray-light;
-    border: 1px solid var.$gray-light;
-    color: var.$gray;
-    cursor: default;
-  }
+	&:disabled {
+		background-color: var.$gray-light;
+		border: 0.0625rem solid var.$gray-light;
+		color: var.$gray;
+		cursor: default;
+	}
 }
-
 
 // Primary button style
 .jeo-button-primary {
-  @include mix.styleJeoButton(
-    $primaryColor:  var.$primary-periwinkle,
-    $txtColor:      white,
-    $hoverColor:    var.$primary-periwinkle-light);
+	@include mix.jeo-button(
+		$hov-color: var.$primary-periwinkle-light,
+		$bg-color: var.$primary-periwinkle
+	);
 }
 
 .jeo-button-primary-inverse {
-  @include mix.styleInverseJeoButton(var.$primary-periwinkle, white);
+	@include mix.jeo-button($hov-color: var.$primary-periwinkle, $inverse: true);
 }
-
 
 // Secondary button style
 .jeo-button-secondary {
-  @include mix.styleJeoButton(
-    $primaryColor:  var.$secondary-pink,
-    $txtColor:      white,
-    $hoverColor:    var.$secondary-pink-light);
+	@include mix.jeo-button(
+		$hov-color: var.$secondary-pink-light,
+		$bg-color: var.$secondary-pink
+	);
 }
 
 .jeo-button-secondary-inverse {
-  @include mix.styleInverseJeoButton(var.$secondary-pink, white);
+	@include mix.jeo-button($hov-color: var.$primary-periwinkle, $inverse: true);
 }
-
 
 // Dark button style
 .jeo-button-dark {
-  @include mix.styleJeoButton(
-    $primaryColor:  var.$black-dark,
-    $txtColor:      white,
-    $hoverColor:    var.$black-dark-light);
+	@include mix.jeo-button(
+		$hov-color: var.$black-dark-light,
+		$bg-color: var.$black-dark
+	);
 }
 
 .jeo-button-dark-inverse {
-  @include mix.styleInverseJeoButton(var.$black-dark, white);
+	@include mix.jeo-button($hov-color: var.$black-dark, $inverse: true);
 }

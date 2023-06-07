@@ -1,111 +1,109 @@
-import { Component, OnInit } from '@angular/core';
-import { IPlayer, PlayersService } from '../services/players.service';
-import { GameboardService} from '../services/gameboard.service';
+import { Component } from '@angular/core';
+import { IPlayer, PlayerService } from '../services/player/player.service';
 import { MatDialog } from '@angular/material/dialog';
-import { IQuestionResult, JeoQuestionComponent } from '../shared/jeo-question/jeo-question.component';
-import { ICategory, IQuestion, IQuestionModal, QuestionService } from '../services/question.service';
-import { IConfirmModalData, JeoConfirmModalComponent } from '../shared/jeo-confirm-modal/jeo-confirm-modal.component';
+import { JeoQuestionComponent } from '../shared/jeo-question/jeo-question.component';
+import {
+	ICategory,
+	IQuestion,
+	IQuestionModal,
+	QuestionService,
+} from '../services/question.service';
 
 @Component({
-  selector: 'jeo-gameboard',
-  templateUrl: './jeo-gameboard.component.html'
+	selector: 'jeo-gameboard',
+	templateUrl: './jeo-gameboard.component.html',
 })
-export class JeoGameboardComponent implements OnInit {
+export class JeoGameboardComponent {
 
+	/**
+	 * @param {MatDialog} dialog - Service to open Material Design modal dialogs.
+	 * @param {PlayerService} playerService  - Player service.
+	 * @param {QuestionService} questionService - Question service.
+	 */
+	constructor(
+		public dialog: MatDialog,
+		private readonly playerService: PlayerService,
+		private readonly questionService: QuestionService
+	) {}
 
-  constructor(
-    public dialog: MatDialog,
-    private playersService: PlayersService,
-    private questionService: QuestionService) { }
+	/**
+	 * @description
+	 * Get list of categories and questions.
+	 *
+	 * @returns {ICategory[]} List of questions.
+	 */
+	get categoryQuestions(): ICategory[] {
+		return this.questionService.getQuestions();
+	}
 
-  ngOnInit(): void {
-  }
+	/**
+	 * @description
+	 * Get list of players.
+	 *
+	 * @returns {IPlayer[]} List of players.
+	 */
+	get players(): IPlayer[] {
+		return this.playerService.getPlayerSettings();
+	}
 
-  /**
-   * Get list of categories and questions.
-   * @type {ICategory[]}
-   */
-  get categoryQuestions(): ICategory[] {
-    return this.questionService.getQuestions();
-  }
+	/**
+	 * @description
+	 * Get the 'id' of the player whose turn it is currently.
+	 *
+	 * @returns {number} Active player's `id`.
+	 */
+	get activePlayerId(): number {
+		return this.playerService.getActivePlayerId();
+	}
 
-  /**
-   * Get list of players.
-   * @type {IPlayer[]}
-   */
-  get players(): IPlayer[] {
-    return this.playersService.getPlayerSettings();
-  }
+	/**
+	 * @description
+	 * Reset scores to $0 for each player.
+	 */
+	restartGame(): void {
+		this.playerService.resetPlayerScores();
+		this.questionService.resetQuestions();
+	}
 
-  /**
-   * Get the 'id' of the player whose turn it is currently.
-   * @type {number}
-   */
-  get activePlayerId(): number {
-    return this.playersService.getActivePlayerId();
-  }
+	/**
+	 * @description
+	 * Exit the game.
+	 */
+	exitGame(): void {
+		this.playerService.onGameExit();
+		this.questionService.resetQuestions();
+	}
 
-  /**
-   * Reset scores to $0 for each player.
-   */
-  resetScores(): void {
-    this.playersService.onScoresReset();
-  }
+	/**
+	 * @description
+	 * Opens a modal displaying category question with answer options.
+	 *
+	 * @param {IQuestion} question - Category question card clicked.
+	 * @param {ICategory} cat - Category question belongs to.
+	 */
+	onQuestionClick(question: IQuestion, cat: ICategory): void {
+		question.isCleared = true;
 
-  /**
-   * Exit the game.
-   */
-  exitGame(): void {
-    this.playersService.onGameExit();
-    this.questionService.onGameExit();
-  }
+		const activePlayer = this.playerService.getActivePlayerById();
+		const modalData: IQuestionModal = {
+			categoryTitle: cat.title,
+			points: question.points,
+			question: question.question,
+			answer: question.answer,
+			answerChoices: question.answerChoices,
+			activePlayer: activePlayer,
+		};
 
-  /**
-   * Opens a modal displaying category question with answer options.
-   *
-   * @param {IQuestion} question - Category question card clicked.
-   * @param {ICategory} cat - Category question belongs to.
-   */
-  onQuestionClick(question: IQuestion, cat: ICategory): void {
-    question.isCleared = true;
-
-    if (cat.questions.every(c => c.isCleared)) {
-      cat.isCleared = true;
-    }
-
-    const activePlayer = this.playersService.getActivePlayerById();
-    const modalData: IQuestionModal = {
-      categoryTitle: cat.title,
-      points: question.points,
-      question: question.question,
-      answer: question.answer,
-      answerChoices: question.answerChoices,
-      activePlayer: activePlayer
-    };
-
-    const dialogRef = this.dialog.open(JeoQuestionComponent, {
-      width: '750px',
-      data: modalData,
-    });
-
-    dialogRef.afterClosed().subscribe((result: IQuestionResult) => {
-      if (result.isCorrectAnswer) {
-        this.playersService.onScoreIncrease(activePlayer.index, question.points);
-      }
-
-      const settings: IConfirmModalData = {
-        headerText: result.isCorrectAnswer ? 'Correct Answer' : 'Incorrect Answer',
-        message: `${(result.isCorrectAnswer ? '$' + question.points : 'No')} points awarded to ${activePlayer.name}.`,
-        btnTheme: 'dark',
-        headerTheme: result.isCorrectAnswer? 'warning' : 'danger'
-      };
-
-      const dialogRef = this.dialog.open(JeoConfirmModalComponent, {
-        width: '530px',
-        data: settings,
-      });
-
-    });
-
-  }
+		// Open question modal
+		this.dialog
+			.open(JeoQuestionComponent, {
+				width: '750px',
+				height: '610px',
+				data: modalData,
+			})
+			.afterClosed()
+			.subscribe(() => {
+				this.playerService.nextPlayersTurn(activePlayer.index);
+			});
+	}
 }

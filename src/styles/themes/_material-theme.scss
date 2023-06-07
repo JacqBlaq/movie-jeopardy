@@ -1,63 +1,66 @@
 @use '@angular/material' as mat;
 @use '../abstract/variables' as var;
 
-
 $my-primary: mat.define-palette(var.$primary-palette, 400);
 $my-accent: mat.define-palette(var.$secondary-palette, 300);
 $my-warn: mat.define-palette(mat.$red-palette);
 
-
 $my-custom-typography-config: mat.define-typography-config(
-  $font-family: var.$font-family-body,
-  $headline:     mat.define-typography-level(
-    $font-size:   var.$h1-font-size,
-    $line-height: var.$h1-font-size,
-    $font-weight: var.$font-weight-bold,
-    $font-family: var.$font-family-body
-  ),
-  $title:     mat.define-typography-level(
-    $font-size:   var.$h2-font-size,
-    $line-height: var.$h2-font-size,
-    $font-weight: var.$font-weight-bold,
-    $font-family: var.$font-family-body,
-  ),
-  $subheading-2:     mat.define-typography-level(
-    $font-size:   var.$h3-font-size,
-    $line-height: var.$h3-font-size,
-    $font-weight: var.$font-weight-bold,
-    $font-family: var.$font-family-body,
-  ),
-  $subheading-1:    mat.define-typography-level(
-    $font-size:   var.$h4-font-size,
-    $line-height: var.$h4-font-size,
-    $font-weight: var.$font-weight-bold,
-    $font-family: var.$font-family-body,
-
-  ),
-  $body-2:    mat.define-typography-level(
-    $font-size:   var.$font-size-body,
-    $line-height: var.$font-size-body,
-    $font-weight: var.$font-weight-bold,
-    $font-family: var.$font-family-body,
-  ),
-  $body-1:    mat.define-typography-level(
-    $font-size:   var.$font-size-body,
-    $line-height: var.$font-size-body,
-    $font-weight: var.$font-weight-regular,
-    $font-family: var.$font-family-body,
-  ),
+	$font-family: var.$font-family-body,
+	$headline:
+		mat.define-typography-level(
+			$font-size: var.$h1-font-size,
+			$line-height: var.$h1-font-size,
+			$font-weight: var.$font-weight-bold,
+			$font-family: var.$font-family-body,
+		),
+	$title:
+		mat.define-typography-level(
+			$font-size: var.$h2-font-size,
+			$line-height: var.$h2-font-size,
+			$font-weight: var.$font-weight-bold,
+			$font-family: var.$font-family-body,
+		),
+	$subheading-2:
+		mat.define-typography-level(
+			$font-size: var.$h3-font-size,
+			$line-height: var.$h3-font-size,
+			$font-weight: var.$font-weight-bold,
+			$font-family: var.$font-family-body,
+		),
+	$subheading-1:
+		mat.define-typography-level(
+			$font-size: var.$h4-font-size,
+			$line-height: var.$h4-font-size,
+			$font-weight: var.$font-weight-bold,
+			$font-family: var.$font-family-body,
+		),
+	$body-2:
+		mat.define-typography-level(
+			$font-size: var.$font-size-body,
+			$line-height: var.$font-size-body,
+			$font-weight: var.$font-weight-bold,
+			$font-family: var.$font-family-body,
+		),
+	$body-1:
+		mat.define-typography-level(
+			$font-size: var.$font-size-body,
+			$line-height: var.$font-size-body,
+			$font-weight: var.$font-weight-regular,
+			$font-family: var.$font-family-body,
+		),
 );
 
+$my-theme: mat.define-light-theme(
+	(
+		color: (
+			primary: $my-primary,
+			accent: $my-accent,
+			warn: $my-warn,
+		),
+		typography: $my-custom-typography-config,
+		density: 0,
+	)
+);
 
-
-$my-theme: mat.define-light-theme((
- color: (
-   primary: $my-primary,
-   accent: $my-accent,
-   warn: $my-warn,
- ),
- typography: $my-custom-typography-config,
- density: 0,
-));
-
-@include mat.all-component-themes($my-theme)
+@include mat.all-component-themes($my-theme);
