@@ -18,10 +18,11 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { JeoAddPlayersComponent } from './jeo-add-players/jeo-add-players.component';
 import { JeoGameCardComponent } from './jeo-game-card/jeo-game-card.component';
-import { JeoQuestionComponent } from './jeo-question/jeo-question.component';
+import { JeoQuestionComponent } from './jeo-question/jeo-question-modal.component';
 import { JeoGamePlayerCardComponent } from './jeo-game-player-card/jeo-game-player-card.component';
 import { JeoAnswerComponent } from './jeo-question/jeo-answer-choice/jeo-answer-choice.component';
 import { JeoAlertModalComponent } from './jeo-alert-modal/jeo-alert-modal.component';
+import { JeoWinnerModalComponent } from './jeo-winner-modal/jeo-winner-modal.component';
 
 @NgModule({
 	declarations: [
@@ -35,6 +36,7 @@ import { JeoAlertModalComponent } from './jeo-alert-modal/jeo-alert-modal.compon
 		JeoGamePlayerCardComponent,
 		JeoAnswerComponent,
 		JeoAlertModalComponent,
+		JeoWinnerModalComponent,
 	],
 	imports: [
 		CommonModule,
@@ -54,6 +56,7 @@ import { JeoAlertModalComponent } from './jeo-alert-modal/jeo-alert-modal.compon
 		JeoGameCardComponent,
 		JeoQuestionComponent,
 		JeoAlertModalComponent,
+		JeoWinnerModalComponent,
 	],
 	providers: [
 		{

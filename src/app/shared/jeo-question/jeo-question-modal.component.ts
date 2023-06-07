@@ -9,7 +9,7 @@ export interface IModalData extends IQuestionModal {
 
 @Component({
 	selector: 'jeo-question',
-	templateUrl: './jeo-question.component.html',
+	templateUrl: './jeo-question-modal.component.html',
 })
 export class JeoQuestionComponent {
 	question!: IModalData;

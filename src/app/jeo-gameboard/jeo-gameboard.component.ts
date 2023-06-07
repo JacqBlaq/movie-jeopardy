@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IPlayer, PlayerService } from '../services/player/player.service';
 import { MatDialog } from '@angular/material/dialog';
-import { JeoQuestionComponent } from '../shared/jeo-question/jeo-question.component';
+import { JeoQuestionComponent } from '../shared/jeo-question/jeo-question-modal.component';
 import {
 	ICategory,
 	IQuestion,
