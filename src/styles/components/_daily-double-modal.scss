@@ -1,0 +1,67 @@
+@use '../abstract/variables' as var;
+
+jeo-daily-double-modal {
+	jeo-container.linear-gradient .jeo-container-slab {
+		transform: translateY(-4.5rem);
+	}
+
+	.jeo-header-inner {
+		h2 {
+			font-family: var.$font-family-title !important;
+			color: var.$secondary-pink;
+		}
+	}
+
+	jeo-slab-header {
+		color: white;
+		text-align: center;
+	}
+}
+
+.jeo-wager-question {
+	margin: 2rem 0 0.9375rem !important;
+}
+
+.jeo-wager-amount {
+	width: 11.8125rem;
+	height: 3.875rem;
+	font-style: italic;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 0 auto 2.625rem;
+	border: 0.0625rem dashed var.$primary-periwinkle;
+	border-radius: var.$default-border-radius;
+
+	h2 {
+		margin: 0;
+	}
+}
+
+.jeo-wager-slider {
+	display: flex;
+	align-items: center;
+	margin-bottom: 4.375rem;
+
+	.slider-hint {
+		font-size: 1rem;
+		margin: 0 0.625rem 0 0;
+
+		&:last-of-type {
+			margin: 0 0 0 0.625rem;
+		}
+	}
+
+	mat-slider {
+		flex-grow: 1;
+
+		.mat-slider-ticks {
+			background-color: var.$gray-light !important;
+		}
+
+		.mat-slider-thumb,
+		.mat-slider-track-fill {
+			background-color: var.$primary-periwinkle !important;
+		}
+	}
+}

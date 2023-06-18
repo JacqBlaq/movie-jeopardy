@@ -1,30 +1,24 @@
 import { Component, Input } from '@angular/core';
-
-export type HeaderTheme = 'primary' | 'warning' | 'danger' | 'dark';
-
-enum HeaderThemeClass {
-	'primary' = '',
-	'warning' = 'warning-header',
-	'danger' = 'danger-header',
-	'dark' = 'dark-header',
-}
+import { HeaderTheme, HeaderThemeClass } from 'src/app/models/header.type';
 
 @Component({
 	selector: 'jeo-header',
 	template: `
-		<div class="jeo-header {{ getThemeClass }}">
+		<div class="jeo-header {{getThemeClass}}">
 			<div class="jeo-header-line"></div>
 			<div class="jeo-header-title">
-				<h4 class="jeo-header-text" [innerHTML]="labelText"></h4>
+				<h4 *ngIf="labelText.trim().length" class="jeo-header-text">{{labelText}}</h4>
+				<ng-content></ng-content>
 			</div>
 		</div>
 	`,
 })
 export class JeoHeaderComponent {
+
 	@Input() labelText: string = '';
 	@Input() theme: HeaderTheme = 'primary';
 
-	/** Get class names based on `theme` */
+	/** Gets class names based on `theme` */
 	get getThemeClass(): string {
 		return HeaderThemeClass[this.theme];
 	}

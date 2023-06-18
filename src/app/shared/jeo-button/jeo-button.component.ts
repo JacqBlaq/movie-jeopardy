@@ -3,6 +3,7 @@ import { Component, HostBinding, Input } from '@angular/core';
 export type ButtonTheme =
 	| 'primary'
 	| 'primary-inverse'
+	| 'primary-dark'
 	| 'secondary'
 	| 'secondary-inverse'
 	| 'dark'
@@ -11,6 +12,7 @@ export type ButtonTheme =
 enum ButtonThemeClass {
 	'primary' = 'jeo-button-primary',
 	'primary-inverse' = 'jeo-button-primary-inverse',
+	'primary-dark' = 'jeo-button-primary-dark',
 	'secondary' = 'jeo-button-secondary',
 	'secondary-inverse' = 'jeo-button-secondary-inverse',
 	'dark' = 'jeo-button-dark',
@@ -23,6 +25,7 @@ enum ButtonThemeClass {
 })
 export class JeoButtonComponent {
 	@Input() theme: ButtonTheme = 'primary';
+	@Input() customClass: string = '';
 
 	/**
 	 * @description
@@ -30,6 +33,6 @@ export class JeoButtonComponent {
 	 */
 	@HostBinding('attr.class')
 	get getClass(): string {
-		return `jeo-button ${ButtonThemeClass[this.theme]}`;
+		return `jeo-button ${ButtonThemeClass[this.theme]} ${this.customClass}`;
 	}
 }

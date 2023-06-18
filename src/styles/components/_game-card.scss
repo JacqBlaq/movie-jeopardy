@@ -1,7 +1,7 @@
 @use '../abstract/variables' as var;
 
 .jeo-game-card {
-	background-color: var.$primary-periwinkle-light;
+	background: var.$radial-gradient;
 	height: 100%;
 	text-align: center;
 	color: white;
@@ -14,6 +14,7 @@
 		cursor: pointer;
 		box-shadow: var.$default-box-shadow;
 		background-color: var.$primary-periwinkle;
+		border: 0.1875rem solid white;
 	}
 
 	.jeo-game-card-label {
@@ -31,7 +32,7 @@
 		linear-gradient(
 			180deg,
 			var.$secondary-pink-lightest 0%,
-			var.$secondary-pink 100%
+			var.$primary-periwinkle 100%
 		)
 		0% 0% no-repeat padding-box;
 }

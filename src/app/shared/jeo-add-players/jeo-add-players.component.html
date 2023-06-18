@@ -1,44 +1,58 @@
 <form #playersForm="ngForm" class="jeo-add-player-container">
 
-  <div *ngFor="let player of players; index as i"
-	class="jeo-add-player-card">
+  <ng-container *ngFor="let player of players; index as i; last as last">
 
-    <div *ngIf="players.length > 1"
-      class="jeo-remove-button"
-      (click)="onRemovePlayer(player.id)">
-      <mat-icon class="jeo-icon-remove">close</mat-icon>
+    <div class="jeo-player-container {{player.theme}}-theme">
+      <div class="jeo-avatar square"
+        (click)="fileUpload.click()"
+        matTooltip="Upload an avatar."
+        [style.background]="player.avatar ? 'center / cover url(' + player.avatar + ')' : '#fff'">
+
+        <input #fileUpload type="file" accept="image/*"
+          (change)="onUploadAvatar(player.id, $event)">
+
+        <div class="jeo-remove-btn">
+          <span>{{i + 1}}</span>
+        </div>
+
+        <mat-icon class="jeo-default-avatar"
+          *ngIf="player.avatar == null">person</mat-icon>
+      </div>
+
+      <div class="jeo-player-info-container p-10"
+        [class.secondary-theme]="(i + 1) % 2 == 0"
+        [class.tertiary-theme]="(i + 1) % 3 == 0">
+
+        <div class="form-label-header">
+          <Label class="form-label" for="player-{{i}}">Name</Label>
+
+          <button type="button" *ngIf="players.length > 1"
+            class="jeo-remove-player-btn"
+            (click)="onRemovePlayer(player.id)">
+            <mat-icon>close</mat-icon>
+          </button>
+        </div>
+
+        <input type="text"
+          id="player-{{i}}"
+          name="player-{{i}}"
+          class="form-control"
+          [(ngModel)]="player.name"
+          (ngModelChange)="onNameChange(player.id, $event)">
+      </div>
+
+      <ng-container *ngIf="last">
+        <button jeo-button *ngIf="players.length < 5"
+          theme="primary-inverse"
+          customClass="jeo-add-player-btn dashed"
+          (click)="onAddPlayer()">
+          <div class="jeo-add-player-inner">
+            <mat-icon>add</mat-icon>
+            <span>Player</span>
+          </div>
+        </button>
+      </ng-container>
     </div>
 
-    <div class="jeo-player-icon"
-      (click)="fileUpload.click()"
-      matTooltip="Upload an avatar"
-      [style.background]="player.avatar ? 'center / cover url(' + player.avatar + ')': '#fff'">
-
-      <input #fileUpload type="file" accept="image/*"
-        (change)="onUploadAvatar(i, $event)">
-
-      <mat-icon *ngIf="player.avatar == null"
-        class="jeo-icon-person">person</mat-icon>
-    </div>
-
-    <div class="jeo-player-info">
-      <label for="player-name-{{i}}">Name: </label>
-      <input type="text"
-	  	id="player-name-{{i}}"
-	  	name="player-name-{{i}}"
-        class="form-control"
-        [(ngModel)]="player.name"
-        (ngModelChange)="onNameChange(i, $event)">
-    </div>
-  </div>
-
-  <div *ngIf="players.length < 5"
-    class="jeo-add-player-card jeo-add-card p-10"
-    (click)="onAddPlayer()">
-
-    <div class="jeo-add-card-inner">
-      <mat-icon>add</mat-icon>
-      <h4>Player</h4>
-    </div>
-  </div>
+  </ng-container>
 </form>

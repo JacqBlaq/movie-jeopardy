@@ -1,0 +1,30 @@
+@use '../abstract/variables' as var;
+
+.jeo-avatar {
+	height: 3.125rem;
+	width: 3.125rem;
+	min-width: 3.125rem;
+	display: flex;
+	border-radius: 99rem;
+	justify-content: center;
+	align-items: center;
+	background-color: var.$primary-periwinkle;
+	border: 0.0625rem double var.$primary-periwinkle;
+	outline: 0.125rem solid white;
+	outline-offset: -0.1875rem;
+	color: white;
+}
+
+.jeo-avatar.small {
+	height: 1.5rem;
+	width: 1.5rem;
+	min-width: 1.5rem;
+}
+
+.jeo-avatar.square {
+	width: 4.6875rem;
+	height: 4.6875rem;
+	min-width: 4.6875rem;
+	border-radius: var.$default-border-radius;
+	background-color: white;
+}

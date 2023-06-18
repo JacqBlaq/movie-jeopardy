@@ -1,0 +1,52 @@
+@use '../abstract/variables' as var;
+
+.mat-snack-bar-container.custom-snack-bar {
+	width: 380px;
+	min-height: 123px !important;
+	max-width: none !important;
+	min-width: 0 !important;
+	padding: 0.9375rem;
+	background-color: var.$black-dark;
+}
+
+.jeo-notification {
+	display: flex;
+	align-items: center;
+	color: var.$gray-light;
+	border-radius: var.$default-border-radius;
+
+	&.error .jeo-notification-title {
+		color: var.$danger-red !important;
+	}
+
+	button[jeo-button] {
+		margin-left: 0.625rem;
+		min-width: auto !important;
+	}
+}
+
+.jeo-notification-info {
+	flex-grow: 1;
+	text-align: center;
+}
+
+.jeo-notification-title {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: var.$tertiary-orange;
+	font-family: var.$font-family-title !important;
+
+	mat-icon {
+		margin-right: 0.3125rem;
+	}
+}
+
+.jeo-notification-subtitle {
+	margin: 0.3125rem 0;
+}
+
+.jeo-mark-text {
+	font-weight: var.$font-weight-semi-bold;
+	font-style: italic;
+}

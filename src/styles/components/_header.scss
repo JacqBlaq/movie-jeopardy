@@ -15,20 +15,16 @@
 }
 
 .jeo-header-title {
-	height: 3.125rem;
 	z-index: 1;
 	position: relative;
-	text-align: center;
-	padding: 0.3125rem 0.9375rem;
+	min-width: 21.875rem;
+	padding: 0.625rem 0.9375rem;
 	border-radius: 0.25rem;
-	padding: 0 5rem;
 	display: inline-flex;
+	align-items: center;
+	justify-content: center;
 	background-color: var.$secondary-pink;
-
-	.jeo-header-text {
-		color: white;
-		margin: auto !important;
-	}
+	color: white;
 }
 
 .jeo-header {
@@ -41,6 +37,44 @@
 	}
 
 	&.dark-header {
-		@include mix.style-header($bg-color: var.$black-dark);
+		.jeo-header-line {
+			background-color: white;
+		}
+
+		.jeo-header-title {
+			background-color: var.$black-dark;
+			border: 2px solid var.$off-white;
+		}
+	}
+}
+
+// Container slab's header
+jeo-slab-header {
+	background-color: #ffffff40;
+	border: 0.0625rem solid white;
+	padding: 2.1875rem 1.25rem 1.25rem;
+	color: white;
+	min-height: 9.375rem;
+	align-items: center;
+	display: block;
+	border-radius: var.$default-border-radius;
+
+	&:not(:only-child) {
+		margin-bottom: 3.125rem;
+	}
+}
+
+.jeo-slab-button-container:has([jeo-button]) {
+	margin-top: 3.125rem;
+}
+
+.jeo-slab-button-container {
+	display: flex;
+	width: 100%;
+	align-items: center;
+	justify-content: center;
+
+	.jeo-button:not(:only-child):first-of-type {
+		margin-right: 1.25rem;
 	}
 }

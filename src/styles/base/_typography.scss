@@ -45,7 +45,14 @@ $font-display: 'auto';
 }
 
 body {
+	margin: 0;
 	font-family: var.$font-family-body;
 	font-size: var.$font-size-body;
+	color: var.$black-dark;
 	font-weight: var.$font-weight-regular;
+}
+
+html,
+body {
+	height: 100%;
 }

@@ -74,6 +74,23 @@ $secondary-palette: (
 	),
 );
 
+$radial-gradient: transparent
+	radial-gradient(
+		closest-side at 50% 50%,
+		$primary-periwinkle-light 0%,
+		#474c6a 100%
+	)
+	0% 0% no-repeat padding-box;
+
+$linear-gradient: transparent
+	linear-gradient(
+		58deg,
+		$secondary-pink 0%,
+		$primary-periwinkle-light 50%,
+		$primary-periwinkle 100%
+	)
+	0% 0% no-repeat padding-box;
+
 // Font-family
 $font-family-body: 'lato';
 $font-family-title: 'harlow-solid';

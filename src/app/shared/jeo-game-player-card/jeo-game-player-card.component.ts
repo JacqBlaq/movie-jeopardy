@@ -1,12 +1,12 @@
 import { Component, Input } from '@angular/core';
-import { IPlayer } from 'src/app/services/player/player.service';
+import { Player } from 'src/app/models/player.type';
 
 @Component({
 	selector: 'jeo-game-player-card',
 	templateUrl: './jeo-game-player-card.component.html',
 })
 export class JeoGamePlayerCardComponent {
-	private _player!: IPlayer;
+	private _player!: Player;
 	labelText: string = '';
 
 	@Input() index: number = 0;
@@ -14,17 +14,15 @@ export class JeoGamePlayerCardComponent {
 	@Input() direction: 'vertical' | 'horizontal' = 'vertical';
 
 	/** Object containing player data. */
-	@Input() get player(): IPlayer {
+	@Input() get player(): Player {
 		return this._player;
 	}
 
 	/**
-	 * @description
 	 * Updates player object whenever there's a change.
-	 *
-	 * @param {IPlayer} value - Updated player object.
+	 * @param {Player} value - Updated player object.
 	 */
-	set player(value: IPlayer) {
+	set player(value: Player) {
 		this._player = value;
 	}
 }

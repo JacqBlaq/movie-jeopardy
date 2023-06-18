@@ -7,16 +7,17 @@
 		"sourceType": "module"
 	},
 	"plugins": [
-		"@typescript-eslint",
-		"prettier"
+		"@typescript-eslint"
+		//"prettier"
 	],
 	"extends": [
 		"eslint:recommended",
 		"plugin:@typescript-eslint/recommended",
 		"plugin:@typescript-eslint/recommended-requiring-type-checking",
-		"plugin:@typescript-eslint/strict",
+		//"plugin:@typescript-eslint/strict",
 		//"prettier/@typescript-eslint",
-		"plugin:prettier/recommended"
+		"prettier"
+		//"plugin:prettier/recommended"
 	],
 	"rules": {
 		// HTML rules
@@ -24,27 +25,30 @@
 		// "@html-eslint/no-inline-styles": "error",
 		// "@html-eslint/id-naming-convention": ["warn", "kebab-case"],
 		// Typescript rules
-		"@typescript-eslint/no-unused-vars": "error",
+		"@typescript-eslint/no-unused-vars": "warn",
 		"@typescript-eslint/consistent-type-definitions": ["off"],
-		"@typescript-eslint/no-inferrable-types": ["warn", {
-			"ignoreProperties": true
-		}],
+		"@typescript-eslint/no-inferrable-types": [
+			"warn",
+			{
+				"ignoreProperties": true
+			}
+		],
 		"@typescript-eslint/no-explicit-any": "warn",
 		"@typescript-eslint/no-unsafe-assignment": "warn",
 		"@typescript-eslint/no-unsafe-member-access": "warn",
 		"@typescript-eslint/lines-around-comment": [
 			"warn",
 			{
-				"beforeBlockComment": true,
+				"beforeBlockComment": false,
 				"beforeLineComment": false
 			}
 		],
-		"@typescript-eslint/no-extra-parens": "error",
-		"@typescript-eslint/no-unused-expressions": "error",
-		"@typescript-eslint/ban-types": "error",
-		"@typescript-eslint/class-literal-property-style": "error",
-		"@typescript-eslint/consistent-generic-constructors": "error",
-		"@typescript-eslint/explicit-function-return-type": "error",
+		"@typescript-eslint/no-extra-parens": "warn",
+		"@typescript-eslint/no-unused-expressions": "warn",
+		"@typescript-eslint/ban-types": "warn",
+		"@typescript-eslint/class-literal-property-style": "warn",
+		"@typescript-eslint/consistent-generic-constructors": "warn",
+		"@typescript-eslint/explicit-function-return-type": "warn",
 		"@typescript-eslint/naming-convention": [
 			"warn",
 			{
@@ -64,10 +68,17 @@
 			{
 				"selector": ["classProperty"],
 				"format": ["UPPER_CASE"],
-				"modifiers": ["static"],
-				"leadingUnderscore": "forbid",
+				"modifiers": ["private", "readonly"],
+				"leadingUnderscore": "require",
 				"trailingUnderscore": "forbid"
 			},
+			// {
+			// 	"selector": ["classProperty"],
+			// 	"format": ["UPPER_CASE"],
+			// 	"modifiers": ["static"],
+			// 	"leadingUnderscore": "forbid",
+			// 	"trailingUnderscore": "forbid"
+			// },
 			{
 				"selector": ["interface"],
 				"format": ["PascalCase"],
@@ -81,15 +92,15 @@
 				"leadingUnderscore": "forbid",
 				"trailingUnderscore": "forbid",
 				"custom": {
-					"regex": "^.{3,}$",
+					"regex": "^.{2,}$",
 					"match": true
 				}
 			}
 		],
-		"@typescript-eslint/prefer-readonly": "error",
-		"@typescript-eslint/type-annotation-spacing": "error",
-		"@typescript-eslint/no-duplicate-imports": "error",
-		"@typescript-eslint/no-extra-semi": "error",
+		"@typescript-eslint/prefer-readonly": "warn",
+		"@typescript-eslint/type-annotation-spacing": "warn",
+		"@typescript-eslint/no-duplicate-imports": "warn",
+		"@typescript-eslint/no-extra-semi": "warn",
 		"@typescript-eslint/no-extraneous-class": "off",
 
 		// Base rules for @typescript-eslint
@@ -101,11 +112,11 @@
 		"no-extra-semi": "off",
 
 		// Possible Errors (overrides from recommended set)
-		"no-unexpected-multiline": "error",
+		"no-unexpected-multiline": "warn",
 
 		// All JSDoc comments must be valid
 		"valid-jsdoc": [
-			"error",
+			"warn",
 			{
 				"requireReturn": false,
 				"requireReturnType": true,
@@ -117,8 +128,8 @@
 				}
 			}
 		],
-		"max-params": [ "warn", 3 ],
-		"max-len": [ "warn", 100 ],
+		"max-params": ["warn", 5],
+		"max-len": ["warn", 120],
 		"max-lines": [
 			"warn",
 			{
@@ -136,13 +147,16 @@
 		// "padded-blocks": [ "warn", "never" ],
 		// "quote-props": [ "warn", "consistent-as-needed" ],
 		// "quotes": [ "warn", "single" ],
-		"require-jsdoc": [ "warn", {
-		    "require": {
-		        "FunctionDeclaration": true,
-		        "MethodDefinition": true,
-		        "ClassDeclaration": false
-		    }
-		}]
+		"require-jsdoc": [
+			"warn",
+			{
+				"require": {
+					"FunctionDeclaration": true,
+					"MethodDefinition": true,
+					"ClassDeclaration": false
+				}
+			}
+		]
 		// "semi-spacing": [ "warn", { "before": false, "after": true }],
 		// "semi": [ "error", "always" ],
 		// "sort-vars": "off",

@@ -1,6 +1,8 @@
 @use '@angular/material' as mat;
 @use '../abstract/variables' as var;
 
+@include mat.core();
+
 $my-primary: mat.define-palette(var.$primary-palette, 400);
 $my-accent: mat.define-palette(var.$secondary-palette, 300);
 $my-warn: mat.define-palette(mat.$red-palette);

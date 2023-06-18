@@ -20,7 +20,6 @@
 
 	jeo-container .jeo-container {
 		width: 46.875rem;
-		height: 39.375rem;
 	}
 }
 
@@ -80,4 +79,20 @@
 jeo-home-page,
 jeo-gameboard {
 	margin: auto;
+}
+
+.jeo-game-rules {
+	list-style-type: none;
+	padding: 0;
+
+	li {
+		display: flex;
+		align-items: center;
+		margin-bottom: 0.3125rem;
+	}
+
+	.jeo-avatar {
+		margin-right: 0.625rem;
+		font-size: 12px;
+	}
 }

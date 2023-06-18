@@ -73,7 +73,7 @@ describe('PlayerService', () => {
     service.onRemovePlayer(2);
 
     expect(service.getPlayers().length).toBe(3);
-    expect(service.getPlayers().find(p => p.id == 2)).toBeNull;
+    expect(service.getPlayers().find(p => p.id == 2)).toBeNull();
   });
 
   it('#getActivePlayerId(): should return the number 1', () => {
@@ -82,7 +82,7 @@ describe('PlayerService', () => {
 
   it('#getActivePlayerById(): should return player at index 0', () => {
     service.onAddPlayer();
-    expect(service.getActivePlayerById().index).toBe(0);
+    expect(service.getActivePlayerById().id).toBe(0);
   });
 
   // it('#getActivePlayerById(): should return player at index 2 after passing turn to next player', () => {

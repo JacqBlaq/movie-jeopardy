@@ -5,15 +5,22 @@ const routes: Routes = [
 	{
 		path: '',
 		loadChildren: () =>
-			import('./jeo-home-page/jeo-home-page.module').then(
+			import('./routes/jeo-home-page/jeo-home-page.module').then(
 				(mod) => mod.JeoHomePageModule
 			),
 	},
 	{
 		path: 'gameboard',
 		loadChildren: () =>
-			import('./jeo-gameboard/jeo-gameboard.module').then(
+			import('./routes/jeo-gameboard/jeo-gameboard.module').then(
 				(mod) => mod.JeoGameboardModule
+			),
+	},
+	{
+		path: 'edit-players',
+		loadChildren: () =>
+			import('./routes/jeo-edit-players/jeo-edit-players.module').then(
+				(mod) => mod.JeoEditPlayersModule
 			),
 	},
 ];

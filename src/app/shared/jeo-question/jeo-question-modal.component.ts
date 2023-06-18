@@ -1,87 +1,174 @@
 import { Component, Inject } from '@angular/core';
+import { Subscription, map, takeWhile, timer } from 'rxjs';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { PlayerService } from 'src/app/services/player/player.service';
-import { IQuestionModal } from 'src/app/services/question.service';
-
-export interface IModalData extends IQuestionModal {
-	modalTitle: string;
-}
+import { JeoNotificationComponent } from '../jeo-notification/jeo-notification.component';
+import { Answer, MultipleChoice, QuestionModalData } from 'src/app/models/question.type';
+import { QuestionService } from 'src/app/services/question.service';
 
 @Component({
 	selector: 'jeo-question',
 	templateUrl: './jeo-question-modal.component.html',
 })
 export class JeoQuestionComponent {
-	question!: IModalData;
-	showAnswer: boolean = false;
-	showResultMessage: boolean = false;
-	selectedAnswer: string = '';
-	multipleChoiceKeys: string[] = ['A', 'B', 'C', 'D'];
-	btnText: string = 'Submit';
+	private readonly _MAX_TIME_LIMIT: number = 30;
+
+	prefix: string = '';
+	answerChoices: Answer[] = [];
+
+	showChoices: boolean = false;
+	answerSubmitted: boolean = false;
+	isCorrectAnswer: boolean = false;
+
+	currrentChoice: MultipleChoice | string = '';
+	timer$?: Subscription;
+	timeRemaining?: number;
+
 
 	/**
 	 * @param {MatDialogRef} dialogRef - Reference to modal opened.
-	 * @param {IQuestionModal} data - Object passed in when modal is opened.
+	 * @param {QuestionModalData} data - Object passed in when modal is opened.
 	 * @param {PlayerService} playerService - Player service.
 	 */
 	constructor(
 		public dialogRef: MatDialogRef<JeoQuestionComponent>,
-		@Inject(MAT_DIALOG_DATA) public data: IQuestionModal,
-		private readonly playerService: PlayerService
-	) {
-		this.setData(data);
+		@Inject(MAT_DIALOG_DATA) public question: QuestionModalData,
+		private readonly playerService: PlayerService,
+		private readonly questionService: QuestionService,
+		private readonly snackBar: MatSnackBar) {
+		if (question.isDailyDouble)
+			this.onAnswerQuestion();
 	}
 
 	/**
-	 * @description
-	 * Updates `question` with modal title.
-	 *
-	 * @param {IQuestionModal} question - Object containing 'question' data.
+	 * Gets the number of players.
+	 * @returns {number} Number of players.
 	 */
-	setData(question: IQuestionModal): void {
-		this.question = {
-			...question,
-			modalTitle: `
-				${question.categoryTitle}&nbsp;&nbsp;&nbsp;&nbsp;
-				<strong>$${question.points}</strong>`,
-		};
+	get numOfPlayers(): number {
+		return this.playerService.getPlayerCount();
+	}
+
+	/** Displays answer choices once player chooses to answer question. */
+	onAnswerQuestion(): void {
+		this.prefix = this.questionService.getPrefix(this.question.id);
+		this.answerChoices = this.questionService.getChoices(this.question.id)
+
+		this.showChoices = true;
+		this.startTimer();
+	}
+
+	/** Starts 30 seconds timer. */
+	private startTimer(): void {
+		this.timer$ = timer(0, 1000).pipe(
+			map(sec => (this._MAX_TIME_LIMIT - sec) * 1000),
+    		takeWhile(sec => sec >= 0),
+		  ).subscribe((res) => {
+			this.timeRemaining = res;
+
+			if (this.timeRemaining === 0) {
+				this.outOfTimeNotification();
+			}
+		  });
 	}
 
 	/**
-	 * @returns {boolean} Whether selected answer is correct.
+	 * Gets the answer label based on the multiple-choice key.
+	 * @param {MultipleChoice | string} option - Multiple choice option.
+	 * @returns {string} Answer's label.
 	 */
-	get isCorrectAnswer(): boolean {
-		return this.selectedAnswer === this.question.answer;
+	private getAnswerLabel(option: MultipleChoice | string): string {
+		return this.answerChoices.find(ans => ans.option === option)?.label || option;
 	}
 
-	/**
-	 * Sets `showAnswer` flag to `true` to highlight the correct answer.
-	 */
-	onShowAnswer(): void {
-		this.showAnswer = true;
-		this.btnText = 'Close';
-	}
+	/** Displays snackbar if user doesn't answer question before time runs out. */
+	private outOfTimeNotification(): void {
+		const answer = this.questionService.getAnswer(this.question.id);
+		const answerLabel = this.getAnswerLabel(answer);
+		const subMessage = `${this.prefix} "${this._wrapTextInSpan(answerLabel)}".`;
+		const points = `-$${this.question.points.toString()}`;
+		const message = `${this._wrapTextInSpan(points, 'text-tertiary-orange')} ` +
+			`deducted from ${this._wrapTextInSpan(this.question.activePlayer.name)}.`;
 
-	/**
-	 * Award points to current player if answer is correct.
-	 */
-	awardPoints(): void {
-		if (this.isCorrectAnswer) {
-			const awardedPoints = this.question.points;
-			const playerIndex = this.question.activePlayer.index;
-			this.playerService.onPointsAwarded(playerIndex, awardedPoints);
-		}
-	}
+		const notification = this.snackBar.openFromComponent(JeoNotificationComponent, {
+			data: {
+				titleText: 'Out of time!',
+				subTitleText: 'The correct answer is...',
+				subMessage: subMessage,
+				message: message,
+				icon: 'sentiment_very_dissatisfied',
+				actionBtnText: 'close',
+				customClass: 'error'
+			}
+		});
 
-	/** Close open modal. */
-	onCloseModal(): void {
-		if (this.btnText === 'Close') {
+		notification.onAction().subscribe(() => {
 			this.dialogRef.close();
-		} else if (this.btnText === 'Submit') {
-			this.showResultMessage = true;
-			this.btnText = 'Close';
+		});
+	}
 
-			this.awardPoints();
-		}
+	/** Pass turn to next player. */
+	onPassToNext(): void {
+		this.playerService.nextPlayersTurn(this.question.activePlayer.id);
+		this.question.activePlayer = this.playerService.getActivePlayerById();
+	}
+
+	/** Submit selected answer. */
+	submitAnswer(): void {
+		this.answerSubmitted = true;
+		this.timer$?.unsubscribe();
+
+		this.isCorrectAnswer = this.questionService.isCorrectAnswer(this.question.id, this.currrentChoice);
+
+		this._awardPoints();
+		this._resultsNotification();
+	}
+
+	/** Award or deduct points to current player. */
+	private _awardPoints(): void {
+		const points = this.isCorrectAnswer ? this.question.points : -this.question.points;
+		const id = this.question.activePlayer.id;
+		this.playerService.onPointsAwarded(id, points);
+	}
+
+	/** Displays snackbar letting user know whether they answered correctly. */
+	private _resultsNotification(): void {
+		const answer = this.questionService.getAnswer(this.question.id);
+		const answerLabel = this.getAnswerLabel(answer);
+		const title = this.isCorrectAnswer ? 'Awesome, you got it!' : 'Sorry, wrong answer!';
+		const subMessage = `${this.prefix || ''} "${this._wrapTextInSpan(answerLabel)}".`;
+		const points = `${this.isCorrectAnswer ? '$' + this.question.points.toString() : '-$' +
+			this.question.points.toString()}`;
+		const message = `${this._wrapTextInSpan(points, 'text-tertiary-orange')} ` +
+			`${this.isCorrectAnswer ? 'awarded to' : 'deducted from'} ` +
+			`${this._wrapTextInSpan(this.question.activePlayer.name)}.`;
+		const icon = this.isCorrectAnswer ? 'celebration' : 'sentiment_very_dissatisfied';
+		const customClass = this.isCorrectAnswer ? '' : 'error';
+
+		const notification = this.snackBar.openFromComponent(JeoNotificationComponent, {
+			data: {
+				titleText: title,
+				subTitleText: 'The correct answer is...',
+				subMessage: subMessage,
+				message: message,
+				icon: icon,
+				actionBtnText: 'close',
+				customClass: customClass
+			}
+		});
+
+		notification.onAction().subscribe(() => {
+			this.dialogRef.close();
+		});
+	}
+
+	/**
+	 * Wrap text in html tag.
+	 * @param {string} innerText - Text to wrap arount html tag.
+	 * @param {string} className - Class name.
+	 * @returns {string} Text wrapped in span tag.
+	 */
+	private _wrapTextInSpan(innerText: string, className = 'jeo-mark-text'): string {
+		return `<span class="${className}">${innerText}</span>`
 	}
 }

@@ -1,4 +1,4 @@
-<jeo-container>
+<jeo-container theme="radial-gradient">
   <div class="question-action-bar">
 
     <jeo-game-player-card
@@ -7,42 +7,51 @@
       direction="horizontal">
     </jeo-game-player-card>
 
-    <button jeo-button type="button" theme="primary-inverse"
-      [disabled]="showAnswer || showResultMessage"
-      matTooltip="Forfeit points and reveal the correct answer."
-      (click)="onShowAnswer()">Reveal answer</button>
+    <button jeo-button *ngIf="numOfPlayers > 1 && !showChoices"
+      type="button" theme="primary-inverse"
+      [disabled]="answerSubmitted || showChoices"
+      matTooltip="Pass to the next player."
+      (click)="onPassToNext()">Pass</button>
   </div>
 
-  <jeo-header [labelText]="question.modalTitle"></jeo-header>
+  <jeo-header theme="dark">
+    <h4>{{question.category.label}}</h4>
+    <span class="bullet px-10">&#8226;</span>
+    <h4 class="jeo-question-points">${{question.points}}</h4>
+  </jeo-header>
 
   <jeo-container-slab>
-    <div class="jeo-question-bar">
-      <h5>{{question.question}}</h5>
-    </div>
+    <jeo-slab-header>
+      <h5>{{question.label}}</h5>
+      <div *ngIf="showChoices" class="jeo-timer">
+        {{timeRemaining | date:'mm:ss'}}
+      </div>
 
-    <div class="jeo-answer-choices">
-      <ng-container *ngFor="let answer of question.answerChoices; index as i; even as even;">
-        <button jeo-answer-choice type="button"
-          [labelText]="answer"
-          [multipleChoiceKey]="multipleChoiceKeys[i]"
-          [disabled]="showAnswer"
-          [selectedAnswer]="selectedAnswer"
-          [attr.showAnswer]="showAnswer && answer == question.answer"
-          [attr.direction]="!even ? 'reverse' : ''"
-          (click)="selectedAnswer = answer"></button>
-      </ng-container>
-    </div>
+      <button jeo-button *ngIf="!showChoices"
+        type="button"
+        matTooltip="Answer the question."
+        (click)="onAnswerQuestion()">Answer</button>
+    </jeo-slab-header>
 
-    <h5 *ngIf="showResultMessage"
-      class="jeo-answer-result"
-      [class.jeo-answer-incorrect]="!isCorrectAnswer">
-      <mat-icon>{{isCorrectAnswer ? 'celebration' : 'sentiment_very_dissatisfied'}}</mat-icon>
-      {{(isCorrectAnswer ? 'Correct! $' + question.points : 'Incorrect. No') + ' points awarded to ' + question.activePlayer.name + '.'}}
-    </h5>
+    <ng-container *ngIf="showChoices">
+      <h4 class="jeo-answer-prefix">{{prefix}} ...?</h4>
+
+      <div class="jeo-answer-choices">
+        <ng-container *ngFor="let answer of answerChoices; index as i; even as even;">
+          <button jeo-answer-choice type="button"
+            [class.is-selected]="currrentChoice === answer.option"
+            [labelText]="answer.label"
+            [multipleChoiceKey]="answer.option"
+            [disabled]="answerSubmitted && currrentChoice != answer.option || timeRemaining === 0"
+            [attr.direction]="!even ? 'reverse' : ''"
+            (click)="currrentChoice = answer.option"></button>
+        </ng-container>
+      </div>
+    </ng-container>
 
   </jeo-container-slab>
 
-  <button jeo-button type="button"
-    [disabled]="selectedAnswer == '' && !showAnswer"
-    (click)="onCloseModal()">{{btnText}}</button>
+  <button jeo-button *ngIf="showChoices" type="button"
+    [disabled]="!currrentChoice.length || answerSubmitted"
+    (click)="submitAnswer()">Submit</button>
 </jeo-container>

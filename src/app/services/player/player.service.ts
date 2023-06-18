@@ -1,36 +1,35 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { IPlayerCard, Player } from 'src/app/models/player.type';
 
-export type IPlayer = {
-	id: number;
-	name: string;
-	avatar?: string;
-	score?: number;
-};
-
-export interface IActivePlayer extends IPlayer {
-	index: number;
-}
 
 @Injectable({
 	providedIn: 'root',
 })
 export class PlayerService {
-	private readonly _storageName = 'players';
+	private readonly _STORAGE_NAME = 'players';
+	private _numOfPlayers: number = 1;
 
-	players: IPlayer[] = [{ id: 1, name: '' }];
+	players: Player[] = [{ id: 1, name: '' }];
 
-	private readonly _players$ = new BehaviorSubject<IPlayer[]>([{ id: 1, name: '' }]);
-	private readonly _activePlayerId$ = new BehaviorSubject<number>(1);
+	private readonly _PLAYERS$ = new BehaviorSubject<Player[]>([{ id: 1, name: '' }]);
+	private readonly _ACTIVE_PLAYER_ID$ = new BehaviorSubject<number>(1);
 
 	/**
 	 * @description
 	 * Get the current players.
 	 *
-	 * @returns {IPlayer[]} Players array.
+	 * @returns {Player[]} Players array.
 	 */
-	getPlayers(): IPlayer[] {
-		return this._players$.value;
+	getPlayers(): Player[] | IPlayerCard[] {
+		return this._PLAYERS$.value;
+	}
+
+	/**
+	 * @returns {number} Number of players.
+	 */
+	getPlayerCount(): number {
+		return this._numOfPlayers;
 	}
 
 	/**
@@ -40,60 +39,36 @@ export class PlayerService {
 	 * @returns {number} Player's 'id'.
 	 */
 	getActivePlayerId(): number {
-		return this._activePlayerId$.value;
+		return this._ACTIVE_PLAYER_ID$.value;
 	}
 
 	/**
-	 * @description
-	 * Get the index of the player whose turn it is currently.
-	 *
-	 * @returns {number} Index of active player.
+	 * Gets the active player.
+	 * @returns {Player | undefined} Active player.
 	 */
-	private getActivePlayerIndex(): number {
-		return this.getPlayerSettings().findIndex(
-			(player) => player.id === this.getActivePlayerId()
-		);
-	}
-
-	/**
-	 * @description
-	 * Get the active player.
-	 *
-	 * @returns {IActivePlayer | undefined} Active player object.
-	 */
-	getActivePlayerById(): IActivePlayer {
+	getActivePlayerById(): Player {
 		const foundPlayer =
 			this.getPlayerSettings().find(
 				(player) => player.id === this.getActivePlayerId()
 			) ?? this.getPlayerSettings()[0];
 
-		const player: IActivePlayer = {
-			...foundPlayer,
-			index: this.getActivePlayerIndex(),
-		};
-
-		return player;
+		return foundPlayer;
 	}
 
-	/**
-	 * @description
-	 * Set default values for all players.
-	 */
+	/** Sets the default values for every player. */
 	setDefaultValues(): void {
 		this.players.forEach((player, index) => {
-			if (player.name.trim().length === 0) {
+			if (player.name?.trim().length === 0) {
 				player.name = `Player ${index + 1}`;
 			}
 
 			player.score = 0;
 		});
+
 		this.setPlayerSettings();
 	}
 
-	/**
-	 * @description
-	 * Add a new player to the game only if the max limit of 5 hasnt been reached.
-	 */
+	/** Add a new player to the game only if the max limit of 5 hasnt been reached. */
 	onAddPlayer(): void {
 		if (this.players.length === 5) return;
 
@@ -107,110 +82,106 @@ export class PlayerService {
 	}
 
 	/**
-	 * @description
 	 * Remove a previously added player from game.
-	 *
-	 * @param {number} playerId - Unique player id.
+	 * @param {number} id - Player's `id`.
 	 */
-	onRemovePlayer(playerId: number): void {
+	onRemovePlayer(id: number): void {
 		if (this.players.length === 1) return;
 
-		this.players = this.players.filter((player) => player.id !== playerId);
+		this.players = this.players.filter((player) => player.id !== id);
 		this.setPlayerSettings();
 	}
 
 	/**
-	 * @description
-	 * Update player's score when they get an answer correct.
+	 * Updates a player's score.
 	 *
-	 * @param {number} playerIndex - Index of player
-	 * @param {number} points - Points added to player's overall score.
+	 * @param {number} id - Player's `id`.
+	 * @param {number} points - Points added to or deducted from player's overall score.
 	 */
-	onPointsAwarded(playerIndex: number, points: number): void {
-		const score = this.players[playerIndex].score ?? 0;
-		this.players[playerIndex].score = score + points;
+	onPointsAwarded(id: number, points: number): void {
+		const player = this.players.find(player => player.id === id);
+
+		if (player) {
+			player.score = (player.score || 0) + points;
+		}
 
 		this.setPlayerSettings();
 	}
 
 	/**
-	 * @description
-	 * Set the next active player.
+	 * Sets the next active player.
 	 *
-	 * @param {number} index Previous player's index.
+	 * @param {number} id Previous player's `id`.
 	 */
-	nextPlayersTurn(index: number): void {
+	nextPlayersTurn(id: number): void {
+		const index = this.players.findIndex(player => player.id == id);
+
 		let nextPlayer = this.players[index + 1];
 
 		if (nextPlayer == null) nextPlayer = this.players[0];
 
-		this._activePlayerId$.next(nextPlayer.id);
+		this._ACTIVE_PLAYER_ID$.next(nextPlayer.id);
 	}
 
 	/**
-	 * @description
-	 * Store the uploaded image as a player's avatar at the given index.
+	 * Stores the uploaded image as a player's avatar at the given `id`.
 	 *
-	 * @param {number} index - Index of player in array.
+	 * @param {number} id - Player's `id`.
 	 * @param {string} src - Base64 string of image player uploaded.
 	 */
-	onAvatarUpload(index: number, src: string): void {
-		if (src.trim().length > 0) {
-			this.players[index].avatar = src;
+	onAvatarUpload(id: number, src: string): void {
+		const player = this.players.find(player => player.id === id);
+
+		if (src.trim().length > 0 && player) {
+			player.avatar = src;
 			this.setPlayerSettings();
 		}
 	}
 
 	/**
-	 * @description
-	 * Store the updated value of a player's name at the given index.
-	 *
-	 * @param {number} index - Index of player in array.
+	 * Stores the updated value of a player's name.
+	 * @param {number} id - Player's `id`.
 	 * @param {string} change - Updated value of the player's name.
 	 */
-	onNameChange(index: number, change: string): void {
-		if (change.trim().length > 0 && change.trim().length <= 20) {
-			this.players[index].name = change;
+	onNameChange(id: number, change: string): void {
+		const player = this.players.find(player => player.id === id);
+
+		if (change.trim().length > 0 && change.trim().length <= 20 && player) {
+			player.name = change;
 		}
 	}
 
-	/**
-	 * @description
-	 * Set the score for each player to 0.
-	 */
+	/** Sets the score for every player to 0. */
 	resetPlayerScores(): void {
 		this.players.forEach((player) => {
 			player.score = 0;
 		});
+
 		this.setPlayerSettings();
 	}
 
-	/**
-	 * @description
-	 * Empty players array and update player settings.
-	 */
-	onGameExit(): void {
+	/** Empty players array and update player settings. */
+	resetPlayers(): void {
 		this.players = [{ id: 1, name: '' }];
 		this.setPlayerSettings();
 	}
 
-	/**
-	 * @description
-	 * Store players in localStorage.
-	 */
+	/** Stores players in localStorage. */
 	private setPlayerSettings(): void {
-		this._players$.next(this.players);
-		localStorage.setItem(this._storageName, JSON.stringify(this.getPlayers()));
+		this._PLAYERS$.next(this.players);
+		this._numOfPlayers = this.players.length;
+		localStorage.setItem(this._STORAGE_NAME, JSON.stringify(this.getPlayers()));
 	}
 
 	/**
-	 * @description
-	 * Get array of players from localStorage.
-	 *
-	 * @returns {IPlayer[]} List of players.
+	 * Gets array of players from localStorage.
+	 * @returns {Player[]} List of players.
 	 */
-	getPlayerSettings(): IPlayer[] {
-		const data = localStorage.getItem(this._storageName);
-		return data ? JSON.parse(data) : [];
+	getPlayerSettings(): Player[] {
+		const data = localStorage.getItem(this._STORAGE_NAME);
+		this.players = data ? JSON.parse(data) as unknown as Player[] : [];
+		this._numOfPlayers = this.players.length;
+
+		return this.players;
 	}
 }

@@ -1,76 +1,137 @@
-@use '../abstract/variables' as var;
+@use "../abstract/variables" as var;
 
 .jeo-add-player-container {
-	display: flex;
-	overflow-x: auto;
+	overflow-y: auto;
 	width: 100%;
 	padding: 1.875rem 0;
 }
 
-.jeo-add-player-card {
-	width: 9.375rem;
-	height: 10.9375rem;
-	position: relative;
-	background-color: white;
-	margin-right: 1.25rem;
-	border: 0.0625rem solid var.$primary-periwinkle-light;
-}
-
-.jeo-add-card {
-	border-style: dashed;
-	box-shadow: var.$default-box-shadow;
+.jeo-player-container {
 	display: flex;
-	cursor: pointer;
 
-	.jeo-add-card-inner {
-		margin: auto;
-		text-align: center;
-		color: var.$primary-periwinkle-light;
+	&:not(:last-child) {
+		margin-bottom: 1.25rem;
 	}
-}
 
-.jeo-remove-button {
-	position: absolute;
-	top: 0;
-	right: 0;
-	width: 1.5625rem;
-	height: 1.5625rem;
-	cursor: pointer;
-	text-align: center;
-	background-color: var.$primary-periwinkle-light;
-	border-bottom-left-radius: var.$default-border-radius;
-
-	mat-icon.jeo-icon-remove {
-		color: white;
-	}
-}
-
-.jeo-player-icon {
-	height: 5.875rem;
-	background-color: white;
-	text-align: center;
-	background-position: center;
-	background-size: cover;
-
-	mat-icon.jeo-icon-person {
-		font-size: 7.125rem;
-		height: 5.875rem;
-		width: 7.1875rem;
-		color: var.$primary-periwinkle-light;
+	.jeo-avatar {
+		position: relative;
+		display: flex;
 		cursor: pointer;
+
+		input {
+			display: none;
+		}
 	}
 
-	input {
-		display: none;
+	.jeo-default-avatar {
+		height: 3.125rem;
+		width: 3.75rem;
+		font-size: 3.75rem;
+		display: flex;
+		color: var.$primary-periwinkle-light;
+		margin: auto;
+	}
+
+	.jeo-remove-btn {
+		height: 1.25rem;
+		width: 1.25rem;
+		border-radius: 4px 0px;
+		position: absolute;
+		top: 0;
+		left: 0;
+		background-color: var.$tertiary-orange;
+		font-weight: var.$font-weight-bold;
+		color: var.$black-dark;
+		display: flex;
+
+		span {
+			margin: auto;
+		}
+	}
+
+	&.secondary-theme {
+		.jeo-avatar {
+			border-color: var.$secondary-pink-lightest;
+		}
+
+		.jeo-default-avatar {
+			color: var.$secondary-pink-lightest !important;
+		}
+
+		.jeo-player-info-container {
+			background-color: var.$secondary-pink-lightest;
+
+			.jeo-remove-player-btn {
+				background-color: var.$secondary-pink-light;
+			}
+		}
+	}
+
+	&.tertiary-theme {
+		.jeo-avatar {
+			border-color: var.$primary-periwinkle-lightest;
+		}
+
+		.jeo-default-avatar {
+			color: var.$primary-periwinkle-lightest !important;
+		}
+
+		.jeo-player-info-container {
+			background-color: var.$primary-periwinkle-lightest;
+
+			.jeo-remove-player-btn {
+				background-color: var.$primary-periwinkle-light;
+			}
+		}
 	}
 }
 
-.jeo-player-info {
-	height: 5.0625rem;
-	padding: 0.625rem;
+.jeo-player-info-container {
+	height: 4.6875rem;
+	flex: auto;
+	margin-left: 1.25rem;
+	border-radius: var.$default-border-radius;
 	background-color: var.$primary-periwinkle-light;
+
+	.form-label-header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 0.25rem;
+	}
+
+	.jeo-remove-player-btn {
+		height: 1.25rem;
+		width: 1.25rem;
+		display: flex;
+		padding: 0;
+		justify-content: center;
+		border-radius: var.$default-border-radius;
+		border: 0.0625rem solid white;
+		background-color: var.$primary-periwinkle-lightest;
+
+		mat-icon {
+			color: white;
+			font-size: 1.25rem;
+			height: 1.25rem;
+			width: 1.25rem;
+		}
+	}
 
 	label {
 		color: white;
+	}
+}
+
+.jeo-add-player-btn {
+	flex-grow: inherit;
+	height: auto;
+	margin-left: 1.25rem;
+
+	.jeo-add-player-inner {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 100%;
 	}
 }

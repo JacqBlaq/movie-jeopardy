@@ -1,5 +1,4 @@
 @import './abstract/variables';
-//@import './abstract/functions';
 @import './abstract/mixins';
 
 @import './base/typography';
@@ -20,7 +19,11 @@
 @import './components/answer-choice.scss';
 @import './components/alert-modal';
 @import './components/winner-modal';
+@import './components/daily-double-modal';
 @import './components/header';
+@import './components/avatar';
+@import './components/notification';
 
 @import './pages/home';
 @import './pages/gameboard';
+@import './pages/edit-players';

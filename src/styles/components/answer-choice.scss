@@ -1,5 +1,13 @@
 @use '../abstract/variables' as var;
 
+.jeo-answer-choices {
+	display: grid;
+	grid-template-columns: 50% 50%;
+	grid-template-rows: 3.75rem 3.75rem;
+	grid-row-gap: 1.25rem;
+	margin-bottom: 3.75rem;
+}
+
 [jeo-answer-choice] {
 	display: flex;
 	align-items: center;
@@ -19,11 +27,11 @@
 	overflow: hidden;
 	display: flex;
 	align-items: center;
-	background-color: white;
+	background-color: transparent;
 	justify-content: flex-end;
 	width: calc(100% - 1.5625rem);
-	color: var.$primary-periwinkle;
-	border: 0.0625rem solid var.$primary-periwinkle;
+	color: white;
+	border: 0.0625rem solid white;
 	border-radius: var.$default-border-radius;
 
 	.answer-choice {
@@ -36,17 +44,6 @@
 }
 
 .jeo-answer-avatar {
-	height: 3.125rem;
-	width: 3.125rem;
-	display: flex;
-	border-radius: 99rem;
-	justify-content: center;
-	align-items: center;
-	background-color: var.$primary-periwinkle;
-	border: 0.0625rem double var.$primary-periwinkle;
-	outline: 0.125rem solid white;
-	outline-offset: -0.1875rem;
-	color: white;
 	position: absolute;
 	right: 0;
 }

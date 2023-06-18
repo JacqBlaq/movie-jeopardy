@@ -1,0 +1,17 @@
+<jeo-container>
+  <jeo-header labelText="Rules"></jeo-header>
+
+  <jeo-container-slab>
+
+    <ul class="jeo-game-rules">
+      <li *ngFor="let rule of gameRules; index as i">
+        <div class="jeo-avatar small">{{i + 1}}</div>
+        <span [innerHTML]="rule"></span>
+      </li>
+    </ul>
+
+  </jeo-container-slab>
+
+  <a jeo-button type="button" theme="primary"
+    routerLink="/edit-players">Lets Play!</a>
+</jeo-container>

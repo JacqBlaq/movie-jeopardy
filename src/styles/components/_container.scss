@@ -13,6 +13,27 @@
 	padding: 1.875rem 0;
 }
 
+_%gradient-bg {
+	.jeo-container {
+		height: 100%;
+
+		.jeo-container-slab {
+			padding: 0;
+			transform: translateY(-1.125rem);
+		}
+	}
+}
+
+jeo-container.radial-gradient .jeo-container {
+	@extend %gradient-bg;
+	background: var.$radial-gradient;
+}
+
+jeo-container.linear-gradient .jeo-container {
+	@extend %gradient-bg;
+	background: var.$linear-gradient;
+}
+
 .jeo-container-button {
 	width: 100%;
 	display: flex;

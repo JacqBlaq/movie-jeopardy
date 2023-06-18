@@ -7,5 +7,6 @@
 	"useTabs": true,
 	"tabWidth": 4,
 	"endOfLine": "auto",
+	"printWidth": 120,
 	"singleAttributePerLine": false
 }

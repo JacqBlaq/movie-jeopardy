@@ -4,12 +4,12 @@
 // Base button style
 .jeo-button {
 	height: var.$jeo-button-height;
+	min-width: 9.375rem;
 	padding: var.$jeo-button-padding;
 	box-shadow: var.$default-box-shadow;
 	text-align: center;
 	cursor: pointer;
 	display: block;
-	min-width: 4.6875rem;
 
 	&:disabled {
 		background-color: var.$gray-light;
@@ -29,6 +29,20 @@
 
 .jeo-button-primary-inverse {
 	@include mix.jeo-button($hov-color: var.$primary-periwinkle, $inverse: true);
+}
+
+.jeo-button-primary-dark {
+	@include mix.jeo-button(
+		$hov-color: var.$black-dark-light,
+		$bg-color: var.$black-dark,
+		$txt-color: var.$secondary-pink
+	);
+}
+
+// Dashed primary inverse style
+.jeo-button-primary-inverse.dashed {
+	@extend .jeo-button-primary-inverse;
+	border-style: dashed;
 }
 
 // Secondary button style

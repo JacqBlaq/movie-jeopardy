@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
-import { PlayerService } from '../services/player/player.service';
+import { PlayerService } from '../../services/player/player.service';
 
 @Component({
-	selector: 'jeo-home-page',
-	templateUrl: './jeo-home-page.component.html',
+	selector: 'jeo-edit-players',
+	templateUrl: './jeo-edit-players.component.html',
 })
-export class JeoHomePageComponent {
-
+export class JeoEditPlayersComponent {
 	/**
 	 * @param {PlayerService} playerService - Player service.
 	 */

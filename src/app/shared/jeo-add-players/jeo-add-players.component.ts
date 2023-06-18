@@ -1,64 +1,73 @@
 import { Component } from '@angular/core';
-import { IPlayer, PlayerService } from 'src/app/services/player/player.service';
+import { IPlayerCard } from 'src/app/models/player.type';
+import { Theme } from 'src/app/models/theme.type';
+import { PlayerService } from 'src/app/services/player/player.service';
+
 
 @Component({
 	selector: 'jeo-players',
 	templateUrl: './jeo-add-players.component.html',
 })
 export class JeoAddPlayersComponent {
-	private _currPlayerIndex!: number;
+	private _nextPlayerTheme: Theme = 'secondary';
 
 	/**
 	 * @param {PlayerService} playerService - Service that handles player functions.
 	 */
 	constructor(private readonly playerService: PlayerService) {}
 
-	/**
-	 * @description
-	 * Get list of all players.
-	 */
-	get players(): IPlayer[] {
+	/** Gets list of all players. */
+	get players(): IPlayerCard[] {
 		return this.playerService.getPlayers();
 	}
 
-	/**
-	 * @description
-	 * Add a new player.
-	 */
+	/** Adds a new player. */
 	onAddPlayer(): void {
 		this.playerService.onAddPlayer();
+
+		const lastPlayer = this.players[this.players.length - 1];
+		lastPlayer.theme = this._nextPlayerTheme;
+		this.setNextTheme();
+	}
+
+	/** Sets the next theme. */
+	private setNextTheme(): void {
+		switch (this._nextPlayerTheme) {
+			case 'primary':
+				this._nextPlayerTheme = 'secondary';
+				break;
+			case 'secondary':
+				this._nextPlayerTheme = 'tertiary';
+				break;
+			case 'tertiary':
+				this._nextPlayerTheme = 'primary';
+				break;
+		}
 	}
 
 	/**
-	 * @description
-	 * Remove a previously added player.
-	 *
-	 * @param {number} playerId - Unique player id.
+	 * Removes a previously added player.
+	 * @param {number} id - Unique player id.
 	 */
-	onRemovePlayer(playerId: number): void {
-		this.playerService.onRemovePlayer(playerId);
+	onRemovePlayer(id: number): void {
+		this.playerService.onRemovePlayer(id);
 	}
 
 	/**
-	 * @description
-	 * Update a player's name.
-	 *
-	 * @param {number} index - Player index in array.
+	 * Updates a player's name.
+	 * @param {number} id - Player's `id`.
 	 * @param {string} change - Updated value for players name.
 	 */
-	onNameChange(index: number, change: string): void {
-		this.playerService.onNameChange(index, change);
+	onNameChange(id: number, change: string): void {
+		this.playerService.onNameChange(id, change);
 	}
 
 	/**
-	 * @description
-	 * Upload an image to be used as a player's avatar.
-	 *
-	 * @param {number} index Player index in array.
+	 * Uploads an image to be used as player's avatar.
+	 * @param {number} id Player's `id`.
 	 * @param {Event | any} event Upload event.
 	 */
-	onUploadAvatar(index: number, event: Event | any): void {
-		this._currPlayerIndex = index;
+	onUploadAvatar(id: number, event: Event | any): void {
 		const pattern = /image-*/;
 		const reader = new FileReader();
 		const file: File = event.target?.files[0];
@@ -71,9 +80,7 @@ export class JeoAddPlayersComponent {
 		reader.readAsDataURL(file);
 		reader.onload = (): void => {
 			const base64 = reader.result as string;
-
-			if (this._currPlayerIndex > -1)
-				this.playerService.onAvatarUpload(this._currPlayerIndex, base64);
+			this.playerService.onAvatarUpload(id, base64);
 		};
 	}
 }
