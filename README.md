@@ -1,18 +1,18 @@
 <p align="center">
   <a href="" rel="noopener">
- <img width=200px height=200px style="border-radius: 50%;"
-  src="https://i.imgur.com/8ykUyc6.png" alt="Project logo"></a>
+  <img width=200px height=200px style="border-radius: 50%;"
+    src="https://i.imgur.com/8ykUyc6.png" alt="Project logo"></a>
 </p>
 
 <h1 align="center">Movie Jeopardy</h1>
 
 <div align="center">
 
-[![Static Badge](https://img.shields.io/badge/angular-~13.3.2-c3002f?logo=angular)](https://github.com/angular/angular-cli)
-![Libraries.io dependency status for GitHub repo](https://gitlab-badges.greenpeace.org/librariesio/github/JacqBlaq/movie-jeopardy)
-![GitHub repo size](https://img.shields.io/github/repo-size/JacqBlaq/movie-jeopardy)
-![Lines of code](https://img.shields.io/tokei/lines/github/JacqBlaq/movie-jeopardy)
-![GitHub language count](https://gitlab-badges.greenpeace.org/github/languages/count/JacqBlaq/movie-jeopardy)
+  [![Static Badge](https://img.shields.io/badge/angular-~13.3.2-c3002f?logo=angular)](https://github.com/angular/angular-cli)
+  ![Libraries.io dependency status for GitHub repo](https://gitlab-badges.greenpeace.org/librariesio/github/JacqBlaq/movie-jeopardy)
+  ![GitHub repo size](https://img.shields.io/github/repo-size/JacqBlaq/movie-jeopardy)
+  ![Lines of code](https://img.shields.io/tokei/lines/github/JacqBlaq/movie-jeopardy)
+  ![GitHub language count](https://gitlab-badges.greenpeace.org/github/languages/count/JacqBlaq/movie-jeopardy)
 
 </div>
 
@@ -79,10 +79,14 @@ The `--open` (or just `-o`) option automatically opens your browser to your loca
 
 If your installation and setup was successful, you should see the following page:
 
-<pre><code>
-  <img width=600px  style="border-radius: 4px; border: 1px solid #e1e1e1"
-  src="https://i.imgur.com/kPQgk9G.png" alt="Project logo"></a>
-</pre></code>
+
+<pre>
+  <code>
+    <a href="" rel="noopener">
+    <img width=600px  style="border-radius: 4px; border: 1px solid #e1e1e1"
+      src="https://i.imgur.com/kPQgk9G.png" alt="Project logo"></a>
+  </code>
+</pre>
 
 
 ## 🧰 Build <a name = "build"></a>
