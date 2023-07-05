@@ -79,15 +79,10 @@ The `--open` (or just `-o`) option automatically opens your browser to your loca
 
 If your installation and setup was successful, you should see the following page:
 
-
-<pre>
-  <code>
-    <a href="" rel="noopener">
-    <img width=600px  style="border-radius: 4px; border: 1px solid #e1e1e1"
-      src="https://i.imgur.com/kPQgk9G.png" alt="Project logo"></a>
-  </code>
-</pre>
-
+<p align="center">
+  <a href="" rel="noopener">
+  <img width=600px src="https://i.imgur.com/kPQgk9G.png" alt="Home page"></a>
+</p>
 
 ## 🧰 Build <a name = "build"></a>
 
