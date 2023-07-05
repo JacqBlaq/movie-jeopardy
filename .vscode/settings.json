@@ -1,7 +1,4 @@
 {
-  // "css.validate": false,
-  // "less.validate": false,
-  // "scss.validate": false,
   "[typescript]": {
 	"editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -12,6 +9,13 @@
   },
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": false,
+	"[markdown]": {
+    "editor.quickSuggestions": {
+      "other": true,
+      "comments": false,
+      "strings": false,
+    }
+  },
   "prettier.stylelintIntegration": true,
   "stylelint.enable": true,
   "stylelint.validate": [
