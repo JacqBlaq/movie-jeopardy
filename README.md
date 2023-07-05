@@ -9,10 +9,10 @@
 <div align="center">
 
   [![Static Badge](https://img.shields.io/badge/angular-~13.3.2-c3002f?logo=angular)](https://github.com/angular/angular-cli)
-  ![Libraries.io dependency status for GitHub repo](https://gitlab-badges.greenpeace.org/librariesio/github/JacqBlaq/movie-jeopardy)
+  <!-- ![Libraries.io dependency status for GitHub repo](https://gitlab-badges.greenpeace.org/librariesio/github/JacqBlaq/movie-jeopardy)
   ![GitHub repo size](https://img.shields.io/github/repo-size/JacqBlaq/movie-jeopardy)
-  ![Lines of code](https://img.shields.io/tokei/lines/github/JacqBlaq/movie-jeopardy)
-  ![GitHub language count](https://gitlab-badges.greenpeace.org/github/languages/count/JacqBlaq/movie-jeopardy)
+  ![Lines of code](https://img.shields.io/tokei/lines/github/JacqBlaq/movie-jeopardy) -->
+  <!-- ![GitHub language count](https://gitlab-badges.greenpeace.org/github/languages/count/JacqBlaq/movie-jeopardy) -->
 
 </div>
 
