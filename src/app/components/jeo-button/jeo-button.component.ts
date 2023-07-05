@@ -1,5 +1,5 @@
 import { Component, HostBinding, Input } from '@angular/core';
-import { ButtonTheme, ButtonThemeClass } from 'src/app/models/button-theme.type';
+import { ButtonTheme, ButtonThemeClass } from '../../models/button-theme.type';
 
 @Component({
 	selector: 'button[jeo-button], a[jeo-button]',

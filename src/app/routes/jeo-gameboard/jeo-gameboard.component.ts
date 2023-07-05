@@ -3,12 +3,12 @@ import { PlayerService } from '../../services/player/player.service';
 import { MatDialog } from '@angular/material/dialog';
 import { JeoQuestionComponent } from '../../components/jeo-question/jeo-question-modal.component';
 import { QuestionService } from '../../services/question.service';
-import { JeoDailyDoubleModalComponent } from 'src/app/components/jeo-daily-double-modal/jeo-daily-double-modal.component';
-import { CategoryBase, QuestionBase, QuestionModalData } from 'src/app/models/question.type';
-import { GameboardService } from 'src/app/services/gameboard.service';
-import { Player } from 'src/app/models/player.type';
+import { JeoDailyDoubleModalComponent } from '../../components/jeo-daily-double-modal/jeo-daily-double-modal.component';
+import { CategoryBase, QuestionBase, QuestionModalData } from '../../models/question.type';
+import { GameboardService } from '../../services/gameboard.service';
+import { Player } from '../../models/player.type';
 import { Observable, Subject, takeUntil } from 'rxjs';
-import { UtilsService } from 'src/app/services/utils.service';
+import { UtilsService } from '../../services/utils.service';
 import { Router } from '@angular/router';
 
 @Component({

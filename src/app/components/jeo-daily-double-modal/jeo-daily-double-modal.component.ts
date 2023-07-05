@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { Player } from 'src/app/models/player.type';
+import { Player } from '../../models/player.type';
 
 type DailyDoubleData = {
 	activePlayer: Player,

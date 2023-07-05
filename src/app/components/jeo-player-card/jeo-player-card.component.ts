@@ -1,9 +1,9 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { Direction } from 'src/app/models/direction.type';
-import { Player } from 'src/app/models/player.type';
-import { BinarySize } from 'src/app/models/size.type';
-import { UtilsService as Utils } from 'src/app/services/utils.service';
+import { Direction } from '../../models/direction.type';
+import { Player } from '../../models/player.type';
+import { BinarySize } from '../../models/size.type';
+import { UtilsService as Utils } from '../../services/utils.service';
 
 @Component({
 	selector: 'jeo-player-card',

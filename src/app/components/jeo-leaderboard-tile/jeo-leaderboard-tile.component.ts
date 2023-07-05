@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Player } from 'src/app/models/player.type';
+import { Player } from '../../models/player.type';
 
 @Component({
   selector: 'jeo-leaderboard-tile',

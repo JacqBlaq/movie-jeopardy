@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { Player } from 'src/app/models/player.type';
+import { Player } from '../../models/player.type';
 
 
 @Injectable({

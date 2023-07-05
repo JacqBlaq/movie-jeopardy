@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { MultipleChoice } from 'src/app/models/question.type';
+import { MultipleChoice } from '../../../models/question.type';
 
 @Component({
 	selector: 'button[jeo-answer-choice]',

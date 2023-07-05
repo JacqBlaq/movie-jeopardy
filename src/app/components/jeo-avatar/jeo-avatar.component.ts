@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
-import { Size } from 'src/app/models/size.type';
-import { UtilsService as Utils } from 'src/app/services/utils.service';
+import { Size } from '../../models/size.type';
+import { UtilsService as Utils } from '../../services/utils.service';
 
 @Component({
   selector: 'jeo-avatar',

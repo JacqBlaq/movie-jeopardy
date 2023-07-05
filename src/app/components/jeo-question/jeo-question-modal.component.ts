@@ -2,10 +2,10 @@ import { Component, Inject } from '@angular/core';
 import { Subscription, map, takeWhile, timer } from 'rxjs';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { PlayerService } from 'src/app/services/player/player.service';
+import { PlayerService } from '../../services/player/player.service';
 import { JeoNotificationComponent } from '../jeo-notification/jeo-notification.component';
-import { Answer, MultipleChoice, QuestionModalData } from 'src/app/models/question.type';
-import { QuestionService } from 'src/app/services/question.service';
+import { Answer, MultipleChoice, QuestionModalData } from '../../models/question.type';
+import { QuestionService } from '../../services/question.service';
 
 @Component({
 	selector: 'jeo-question',

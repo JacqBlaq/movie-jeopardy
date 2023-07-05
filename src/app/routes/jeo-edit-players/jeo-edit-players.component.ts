@@ -1,9 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { PlayerService } from '../../services/player/player.service';
-import { Player } from 'src/app/models/player.type';
+import { Player } from '../../models/player.type';
 import { Router } from '@angular/router';
 import { Subject, Subscription, takeUntil } from 'rxjs';
-import { Route } from 'src/app/models/route.enum';
+import { Route } from '../../models/route.enum';
 
 @Component({
 	selector: 'jeo-edit-players',

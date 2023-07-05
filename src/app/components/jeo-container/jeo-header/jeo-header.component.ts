@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { HeaderTheme, HeaderThemeClass } from 'src/app/models/header.type';
+import { HeaderTheme, HeaderThemeClass } from '../../../models/header.type';
 
 @Component({
 	selector: 'jeo-header',
