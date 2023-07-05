@@ -5,7 +5,7 @@
 
     <ul class="jeo-game-rules">
       <li *ngFor="let rule of gameRules; index as i">
-        <div class="jeo-avatar small">{{i + 1}}</div>
+        <small class="rule-number circle">{{i + 1}}</small>
         <span [innerHTML]="rule"></span>
       </li>
     </ul>
@@ -13,5 +13,5 @@
   </jeo-container-slab>
 
   <a jeo-button type="button" theme="primary"
-    routerLink="/edit-players">Lets Play!</a>
+    routerLink="/add-players">Lets Play!</a>
 </jeo-container>

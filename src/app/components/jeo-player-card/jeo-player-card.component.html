@@ -1,0 +1,22 @@
+<div
+	class="player-card"
+	[class.is-horizontal]="direction == 'horizontal'"
+	[class.is-active-player]="activePlayerId == player.id">
+
+	<div class="d-flex player-card-avatar">
+		<jeo-avatar
+			[size]="avatarSize"
+			[avatarUrl]="player.avatar">
+		</jeo-avatar>
+	</div>
+
+	<div class="game-player-info">
+		<small class="text-truncate bold">
+			<mat-icon *ngIf="activePlayerId == player.id"
+				class="active-player-icon">front_hand</mat-icon>
+			{{ player.name }}
+		</small>
+
+		<h6 *ngIf="direction == 'vertical'" class="game-player-score">{{ '$' + (player.score ?? '0') }}</h6>
+	</div>
+</div>

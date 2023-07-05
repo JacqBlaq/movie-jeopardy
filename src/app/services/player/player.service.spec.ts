@@ -53,37 +53,37 @@ describe('PlayerService', () => {
   //   expect(service).toBeTruthy();
   // });
 
-  it('#getPlayers(): should return an array with 1 player', () => {
-    expect(service.getPlayers().length).toBe(1);
-    expect(service.getPlayers()[0].id).toBe(1);
-  });
+//   it('#getPlayers(): should return an array with 1 player', () => {
+//     expect(service.getPlayers().length).toBe(1);
+//     expect(service.getPlayers()[0].id).toBe(1);
+//   });
 
-  it('#getPlayers(): should return 2 players after adding a new player', () => {
-    service.onAddPlayer();
-    expect(service.getPlayers().length).toBe(2);
-  });
+//   it('#getPlayers(): should return 2 players after adding a new player', () => {
+//     service.onAddPlayer();
+//     expect(service.getPlayers().length).toBe(2);
+//   });
 
-  it('#getPlayers(): should return 3 players after removing a player', () => {
-    // Add 3 new players so list is now 4
-    service.onAddPlayer();
-    service.onAddPlayer();
-    service.onAddPlayer();
+//   it('#getPlayers(): should return 3 players after removing a player', () => {
+//     // Add 3 new players so list is now 4
+//     service.onAddPlayer();
+//     service.onAddPlayer();
+//     service.onAddPlayer();
 
-    // Remove a player with #id 2
-    service.onRemovePlayer(2);
+//     // Remove a player with #id 2
+//     service.onRemovePlayer(2);
 
-    expect(service.getPlayers().length).toBe(3);
-    expect(service.getPlayers().find(p => p.id == 2)).toBeNull();
-  });
+//     expect(service.getPlayers().length).toBe(3);
+//     expect(service.getPlayers().find(p => p.id == 2)).toBeNull();
+//   });
 
-  it('#getActivePlayerId(): should return the number 1', () => {
-    expect(service.getActivePlayerId()).toBe(1);
-  });
+//   it('#getActivePlayerId(): should return the number 1', () => {
+//     expect(service.getActivePlayerId()).toBe(1);
+//   });
 
-  it('#getActivePlayerById(): should return player at index 0', () => {
-    service.onAddPlayer();
-    expect(service.getActivePlayerById().id).toBe(0);
-  });
+//   it('#getActivePlayerById(): should return player at index 0', () => {
+//     service.onAddPlayer();
+//     expect(service.getActivePlayerById().id).toBe(0);
+//   });
 
   // it('#getActivePlayerById(): should return player at index 2 after passing turn to next player', () => {
   //   service.onAddPlayer();

@@ -17,6 +17,13 @@ const routes: Routes = [
 			),
 	},
 	{
+		path: 'add-players',
+		loadChildren: () =>
+			import('./routes/jeo-edit-players/jeo-edit-players.module').then(
+				(mod) => mod.JeoEditPlayersModule
+			),
+	},
+	{
 		path: 'edit-players',
 		loadChildren: () =>
 			import('./routes/jeo-edit-players/jeo-edit-players.module').then(

@@ -1,4 +1,5 @@
 @use '../abstract/variables' as var;
+@use '../abstract/mixins' as mix;
 
 .jeo-answer-choices {
 	display: grid;
@@ -44,8 +45,13 @@
 }
 
 .jeo-answer-avatar {
+	@include mix.border-outline-style(var.$primary-periwinkle);
 	position: absolute;
 	right: 0;
+	width: 46px;
+	height: 46px;
+	color: white;
+	background-color: var.$primary-periwinkle;
 }
 
 [jeo-answer-choice]:not([direction='reverse']) {

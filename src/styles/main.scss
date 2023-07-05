@@ -10,10 +10,10 @@
 
 @import './layouts/grid';
 
-@import './components/buttons';
+@import './components/button';
 @import './components/container';
 @import './components/add-player-card';
-@import './components/game-player-card';
+@import './components/player-card';
 @import './components/game-card';
 @import './components/question';
 @import './components/answer-choice.scss';
@@ -23,6 +23,7 @@
 @import './components/header';
 @import './components/avatar';
 @import './components/notification';
+@import './components/leaderboard';
 
 @import './pages/home';
 @import './pages/gameboard';

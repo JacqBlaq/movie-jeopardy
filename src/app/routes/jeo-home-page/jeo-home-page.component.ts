@@ -8,9 +8,7 @@ import { GameboardService } from '../../services/gameboard.service';
 export class JeoHomePageComponent {
 	gameRules: string[] = [];
 
-	/**
-	 * @param {PlayerService} playerService - Player service.
-	 */
+	/** @param gameboardService - Gameboard service. */
 	constructor(private readonly gameboardService: GameboardService) {
 		this.gameRules = this.gameboardService.rules;
 	}

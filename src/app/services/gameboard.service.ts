@@ -7,18 +7,17 @@ import gameRulesJson from '../../assets/data/game-rules.json';
 	providedIn: 'root',
 })
 
-/** Service responsible for Gameboard functions */
 export class GameboardService {
 
-	/** Rules of the game. */
+	/** List of game rules. */
 	rules: string[] = gameRulesJson;
 
-	/** Every category with their respective questions. */
+	/** List of categories and their respective questions. */
 	static categories: ICategory[] = categoryJson;
 
 	/**
-	 * Get the `id` and `label` of every category.
-	 * @returns {CategoryBase[]} The `id` and `label` of every category.
+	 * Gets the `id` and `label` of every category.
+	 * @returns The `id` and `label` of every category.
 	 */
 	static boardCategories(): CategoryBase[] {
 		return this.categories.map(cat => {

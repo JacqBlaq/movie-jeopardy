@@ -20,18 +20,8 @@ jeo-gameboard {
 }
 
 .jeo-players {
-	width: calc(100% - 7.1131rem);
+	flex: 1;
 	justify-content: center;
-}
-
-.jeo-gameboard-buttons {
-	#reset-button {
-		margin-bottom: 0.9375rem;
-	}
-
-	#exit-button {
-		width: 7.1131rem;
-	}
 }
 
 .jeo-gameboard {

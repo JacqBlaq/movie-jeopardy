@@ -27,24 +27,14 @@
 	color: white;
 }
 
-.jeo-header {
-	&.warning-header {
-		@include mix.style-header($bg-color: var.$tertiary-orange);
+.jeo-header.dark-header {
+	.jeo-header-line {
+		background-color: white;
 	}
 
-	&.danger-header {
-		@include mix.style-header($bg-color: var.$danger-red);
-	}
-
-	&.dark-header {
-		.jeo-header-line {
-			background-color: white;
-		}
-
-		.jeo-header-title {
-			background-color: var.$black-dark;
-			border: 2px solid var.$off-white;
-		}
+	.jeo-header-title {
+		background-color: var.$black-dark;
+		border: 2px solid var.$off-white;
 	}
 }
 

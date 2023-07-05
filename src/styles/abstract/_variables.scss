@@ -22,6 +22,7 @@ $danger-red: #b64848;
 
 $gray: #909090;
 $gray-light: #c7c7c7;
+$gray-lightest: #e1e1e1;
 $off-white: #f8f8f8;
 
 $primary-palette: (
@@ -94,28 +95,45 @@ $linear-gradient: transparent
 // Font-family
 $font-family-body: 'lato';
 $font-family-title: 'harlow-solid';
-$font-size-body: 0.875rem;
 
 // Font weights
-$font-weight-heavy: 900;
-$font-weight-bold: 600;
-$font-weight-semi-bold: 500;
-$font-weight-regular: 400;
-$font-weight-light: 300;
-$font-weight-thin: 200;
+$font-weight-heavy: 900; //Lato-black
+$font-weight-bold: 600; //Lato-bold
+$font-weight-semi-bold: 500; //Lato-semi-bold
+$font-weight-regular: 400; //Lato-regular
+$font-weight-light: 300; //Lato-light
+$font-weight-thin: 200; //Lato-thin
 
-// Typography sizes
-$h1-font-size: 3.125rem;
-$h2-font-size: 2.375rem;
-$h3-font-size: 2rem;
-$h4-font-size: 1.75rem;
-$h5-font-size: 1.375rem;
-$h6-font-size: 1.25rem;
+// Typography font sizes
+$h1-font-size: 3.125rem !important;
+$h2-font-size: 2.375rem !important;
+$h3-font-size: 2rem !important;
+$h4-font-size: 1.75rem !important;
+$h5-font-size: 1.375rem !important;
+$h6-font-size: 1.25rem !important;
 $body-font-size: 0.875rem;
+$small-font-size: 0.75rem;
+
+// Typography line heights
+$h1-line-height: 3.75rem !important;
+$h2-line-height: 2.875rem !important;
+$h3-line-height: 2.4375rem !important;
+$h4-line-height: 2.125rem !important;
+$h5-line-height: 1.6875rem !important;
+$h6-line-height: 1.5rem !important;
+$body-line-height: 1.0625rem !important;
+$small-light-height: 0.9375rem !important;
+
+//Letter spacing
+$default-letter-spacing: normal;
 
 // Buttons
 $jeo-button-height: 2.4375rem;
 $jeo-button-padding: 0.625rem 0.875rem;
 
+// Box-shadows
 $default-box-shadow: 0 3px 1px -2px #0003, 0 2px 2px #00000024, 0 1px 5px #0000001f;
+$tile-box-shadow: 0px 2px 1px -1px #0003, 0px 1px 1px 0px #00000024, 0px 1px 3px 0px #0000001f;
+
+// Borders
 $default-border-radius: 0.25rem;

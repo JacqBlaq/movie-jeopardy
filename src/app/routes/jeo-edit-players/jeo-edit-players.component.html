@@ -1,13 +1,64 @@
 <jeo-container>
-    <jeo-header labelText="Players"></jeo-header>
+	<jeo-header labelText="Players"></jeo-header>
 
-    <jeo-container-slab>
+	<jeo-container-slab>
+		<jeo-leaderboard-tile
+			*ngFor="let player of players; index as i; last as last; trackBy: trackByFn">
+			<jeo-avatar
+				size="big"
+				[avatarUrl]="player.avatar"
+				matTooltip="Upload an avatar."
+				(onAvatarChange)="onAvatarChange($event, player.id)">
+				<jeo-avatar-actions>
+					<span>{{ i + 1 }}</span>
+				</jeo-avatar-actions>
+			</jeo-avatar>
 
-        <jeo-players></jeo-players>
+			<jeo-leaderboard-content>
+				<div class="form-header">
+					<Label class="form-label" for="player-{{ i }}">Name</Label>
 
-    </jeo-container-slab>
+					<button
+						type="button"
+						*ngIf="players.length > 1"
+						class="remove-player-btn"
+						matTooltip="Remove player."
+						(click)="onRemovePlayer(player.id)">
+						<mat-icon>close</mat-icon>
+					</button>
+				</div>
 
-    <a jeo-button type="button" theme="primary"
-      routerLink="/gameboard"
-      (click)="setDefaultValues()">Start Game!</a>
-  </jeo-container>
+				<input
+					type="text"
+					id="player-{{ i }}"
+					name="player-{{ i }}"
+					class="form-control"
+					[(ngModel)]="player.name"
+					(ngModelChange)="onNameChange($event, player.id)" />
+			</jeo-leaderboard-content>
+
+			<button
+				jeo-button
+				*ngIf="last && players.length < 5 && currentUrl === route.addPlayers"
+				theme="primary-inverse"
+				customClass="add-new-player dashed"
+				(click)="onAddPlayer()">
+				<mat-icon>add</mat-icon>
+				<span>Player</span>
+			</button>
+
+		</jeo-leaderboard-tile>
+	</jeo-container-slab>
+
+	<a jeo-button type="button" theme="primary-inverse"
+		(click)="returnHome()"
+		[routerLink]="currentUrl == route.editPlayers ? route.gameboard : '/'"
+		class="mr-20">Back</a>
+
+	<a jeo-button *ngIf="currentUrl"
+		type="button" theme="primary"
+		[routerLink]="route.gameboard"
+		(click)="setDefaultValues()">
+		{{ currentUrl === route.addPlayers ? 'Start Game' : 'Save' }}
+	</a>
+</jeo-container>

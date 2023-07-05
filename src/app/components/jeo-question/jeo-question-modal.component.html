@@ -1,0 +1,60 @@
+<jeo-container theme="radial-gradient">
+  <div class="question-action-bar">
+
+    <jeo-player-card
+      [player]="question.activePlayer"
+      [activePlayerId]="question.activePlayer.id"
+      direction="horizontal">
+    </jeo-player-card>
+
+    <button jeo-button *ngIf="numOfPlayers > 1 && !showChoices"
+      type="button" theme="primary-inverse"
+      [disabled]="answerSubmitted || showChoices"
+      matTooltip="Pass to the next player."
+      (click)="onPassToNext()">
+			<mat-icon>partner_exchange</mat-icon>
+			<span>Pass</span>
+		</button>
+  </div>
+
+  <jeo-header theme="dark">
+    <h4>{{question.category.label}}</h4>
+    <span class="bullet px-10">&#8226;</span>
+    <h4 class="jeo-question-points">${{question.points}}</h4>
+  </jeo-header>
+
+  <jeo-container-slab>
+    <jeo-slab-header>
+      <h5>{{question.label}}</h5>
+      <div *ngIf="showChoices" class="jeo-timer">
+        {{timeRemaining | date:'mm:ss'}}
+      </div>
+
+      <button jeo-button *ngIf="!showChoices"
+        type="button"
+        matTooltip="Answer the question."
+        (click)="onAnswerQuestion()">Answer</button>
+    </jeo-slab-header>
+
+    <ng-container *ngIf="showChoices">
+      <h4 class="jeo-answer-prefix">{{prefix}} ...?</h4>
+
+      <div class="jeo-answer-choices">
+        <ng-container *ngFor="let answer of answerChoices; index as i; even as even; trackBy: trackByFn">
+          <button jeo-answer-choice type="button"
+            [class.is-selected]="currrentChoice === answer.option"
+            [labelText]="answer.label"
+            [multipleChoiceKey]="answer.option"
+            [disabled]="answerSubmitted && currrentChoice != answer.option || timeRemaining === 0"
+            [attr.direction]="!even ? 'reverse' : ''"
+            (click)="currrentChoice = answer.option"></button>
+        </ng-container>
+      </div>
+    </ng-container>
+
+  </jeo-container-slab>
+
+  <button jeo-button *ngIf="showChoices" type="button"
+    [disabled]="!currrentChoice.length || answerSubmitted"
+    (click)="submitAnswer()">Submit</button>
+</jeo-container>

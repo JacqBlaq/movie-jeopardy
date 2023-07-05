@@ -29,3 +29,9 @@
 		background-color: $bg-color;
 	}
 }
+
+@mixin border-outline-style($pri-color) {
+	border: 0.0625rem double $pri-color;
+	outline: 0.0625rem solid white;
+	outline-offset: -0.125rem;
+}

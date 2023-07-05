@@ -1,0 +1,64 @@
+@use '../abstract//variables' as var;
+
+jeo-leaderboard-tile {
+	display: flex;
+	align-items: center;
+	margin-bottom: 1.25rem;
+
+	jeo-avatar {
+		margin-right: 1.25rem;
+		cursor: pointer;
+	}
+}
+
+jeo-leaderboard-content {
+	flex: 1;
+	height: 4.6875rem;
+	padding: 0.625rem;
+	border: 0.0625rem solid var.$gray-lightest;
+	border-radius: var.$default-border-radius;
+	background-color: var.$off-white;
+
+	&[theme='dark'] {
+		background-color: var.$black-dark;
+	}
+
+	.form-header {
+		display: flex;
+		flex: 1;
+		align-items: center;
+		margin-bottom: 0.25rem;
+		justify-content: space-between;
+		color: var.$primary-periwinkle;
+	}
+
+	.remove-player-btn {
+		height: 1.125rem;
+		width: 1.125rem;
+		min-width: 1.125rem;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background-color: var.$primary-periwinkle;
+		border: 0.0625rem solid white;
+		box-shadow: 0px 3px 6px #00000029;
+		border-radius: var.$default-border-radius;
+
+		mat-icon {
+			height: 0.8125rem;
+			width: 0.8125rem;
+			font-size: 0.8125rem;
+			color: white;
+		}
+	}
+}
+
+.add-new-player {
+	flex-grow: inherit;
+	margin-left: 1.25rem;
+	height: 4.6875rem;
+	min-width: 6.25rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}

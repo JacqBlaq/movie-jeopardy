@@ -8,7 +8,9 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "eslint --ignore-path .eslintignore --ext .ts .",
-    "stylelint": "npx stylelint \"**/*.scss\" --syntax scss"
+		"generate-trace": "tsc -p tsconfig.json --generateTrace traceDir",
+		"install-analyze-trace": "npm install --no-save @typescript/analyze-trace",
+		"analyze-trace": "npx analyze-trace traceDir"
   },
   "private": true,
   "dependencies": {
@@ -37,6 +39,7 @@
     "eslint-config-prettier": "^8.8.0",
     "eslint-config-standard-with-typescript": "^35.0.0",
     "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-jsdoc": "^46.4.3",
     "eslint-plugin-n": "^15.7.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-promise": "^6.1.1",
@@ -48,10 +51,6 @@
     "karma-jasmine-html-reporter": "~1.7.0",
     "postcss-scss": "^4.0.6",
     "prettier": "^2.8.8",
-    "stylelint": "^15.6.3",
-    "stylelint-config-standard-scss": "^9.0.0",
-    "stylelint-prettier": "^3.0.0",
-    "stylelint-scss": "^5.0.0",
     "typescript": "^4.6.4"
   }
 }

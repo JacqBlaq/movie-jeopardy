@@ -2,29 +2,44 @@
   <div class="jeo-gameboard-header d-flex">
 
     <div class="jeo-players d-flex">
-      <jeo-game-player-card *ngFor="let player of players; index as i"
+      <jeo-player-card *ngFor="let player of (players$ | async); index as i; trackBy: trackByPlayerFn"
+				[index]="i"
         [player]="player"
-        [activePlayerId]="activePlayerId"
-        [index]="i">
-      </jeo-game-player-card>
+        [activePlayerId]="activePlayerId">
+      </jeo-player-card>
     </div>
 
-    <div class="jeo-gameboard-buttons">
-      <button jeo-button type="button" id="reset-button"
-        (click)="annouceWinner()"
-        theme="dark-inverse">Restart Game</button>
-      <a jeo-button routerLink="/"
-        (click)="exitGame()"
-        type="button" id="exit-button"
-        theme="dark-inverse">Exit</a>
+    <div class="jeo-gameboard-actions d-flex">
+			<a jeo-button type="button"
+				routerLink="/edit-players"
+				customClass="circle"
+				theme="dark-inverse">
+				<jeo-icon iconName="manage_accounts" toolTipMessage="Edit player profiles."></jeo-icon>
+			</a>
+
+			<button jeo-button type="button"
+				(click)="annouceWinner()"
+				customClass="circle"
+				theme="dark-inverse">
+				<jeo-icon iconName="restart_alt" toolTipMessage="Reset game."></jeo-icon>
+			</button>
+
+			<a jeo-button type="button"
+				routerLink="/"
+				(click)="exitGame()"
+				customClass="circle"
+				theme="dark-inverse">
+				<jeo-icon iconName="exit_to_app" toolTipMessage="Exit game."></jeo-icon>
+			</a>
+
     </div>
   </div>
 
   <div class="jeo-gameboard">
-    <div class="jeo-category-container" *ngFor="let cat of categories">
+    <div class="jeo-category-container" *ngFor="let cat of categories; trackBy: trackByCategoryFn">
       <jeo-game-card [labelText]="cat.label"></jeo-game-card>
 
-      <jeo-game-card *ngFor="let question of getCategoryQuestions(cat.id)"
+      <jeo-game-card *ngFor="let question of (getCategoryQuestions(cat.id) | async); trackBy: trackByQuestionFn"
         intent="question"
         [isCleared]="question.isCleared ?? false"
         [labelText]="question.points"
