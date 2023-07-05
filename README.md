@@ -79,7 +79,7 @@ The `--open` (or just `-o`) option automatically opens your browser to your loca
 
 If your installation and setup was successful, you should see the following page:
 
-<p align="center">
+<p>
   <a href="" rel="noopener">
   <img width=600px src="https://i.imgur.com/kPQgk9G.png" alt="Home page"></a>
 </p>
