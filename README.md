@@ -22,7 +22,7 @@ Angular Jeopardy-style trivia game. Each category/question is based on a popular
 
 I previously created a similar [`Jeopardy-style Java App`](https://github.com/JacqBlaq/Jeopardy-Game), 6 years ago(2017), for an intro-level programming course in college. Not the cleanest work 😅 but I greatly enjoyed working on that project so I wanted to take another stab at it. It's been a tough year but coding brings me joy so I hope you enjoy this app too 🖤.
 
-Using [![Adobe XD](https://img.shields.io/badge/Adobe%20XD-470137?logo=Adobe%20XD&logoColor=#FF61F6)](https://helpx.adobe.com/xd/user-guide.html), I created a [`style-guide`](https://xd.adobe.com/view/da7916d2-aba1-47ea-b84c-2813a6b1a10a-8f2a/screen/6e287aa6-aef6-443a-9629-fe6de065eb45) to ensure consistent principles, design language, and best practices would be followed. From typography, iconography, components to fully fleshed out mocks of each page.
+Using [![Adobe XD](https://img.shields.io/badge/Adobe%20XD-470137?logo=Adobe%20XD&logoColor=#FF61F6)](https://helpx.adobe.com/xd/user-guide.html), I created a [`style-guide`](https://xd.adobe.com/view/da7916d2-aba1-47ea-b84c-2813a6b1a10a-8f2a/) to ensure consistent principles, design language, and best practices would be followed. From typography, iconography, components to fully fleshed out mocks of each page.
 
 
 ## 📝 Table of Contents
