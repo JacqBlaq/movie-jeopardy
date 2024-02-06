@@ -8,11 +8,14 @@
 
 <div align="center">
 
-  [![Static Badge](https://img.shields.io/badge/angular-~13.3.2-c3002f?logo=angular)](https://github.com/angular/angular-cli)
-  <!-- ![Libraries.io dependency status for GitHub repo](https://gitlab-badges.greenpeace.org/librariesio/github/JacqBlaq/movie-jeopardy)
-  ![GitHub repo size](https://img.shields.io/github/repo-size/JacqBlaq/movie-jeopardy)
-  ![Lines of code](https://img.shields.io/tokei/lines/github/JacqBlaq/movie-jeopardy) -->
-  <!-- ![GitHub language count](https://gitlab-badges.greenpeace.org/github/languages/count/JacqBlaq/movie-jeopardy) -->
+  ![GitHub](https://img.shields.io/github/license/JacqBlaq/movie-jeopardy?style=plastic)
+  [![Static Badge](https://img.shields.io/badge/angular-~13.3.2-c3002f?style=plastic&logo=angular)](https://github.com/angular/angular-cli)
+  ![GitHub repo size](https://img.shields.io/github/repo-size/JacqBlaq/movie-jeopardy?style=plastic)
+  ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/JacqBlaq/movie-jeopardy?style=plastic)
+  ![GitHub language count](https://img.shields.io/github/languages/count/JacqBlaq/movie-jeopardy?style=plastic)
+  ![GitHub top language](https://img.shields.io/github/languages/top/JacqBlaq/movie-jeopardy?style=plastic)
+  ![GitHub last commit](https://img.shields.io/github/last-commit/JacqBlaq/movie-jeopardy?style=plastic)
+
 
 </div>
 
